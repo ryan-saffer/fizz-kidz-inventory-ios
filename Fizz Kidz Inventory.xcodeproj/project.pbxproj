@@ -7,21 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5304614657A72461D9D512F1 /* Pods_Fizz_Kidz_Inventory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDB5F25BDEBEFB501A08983 /* Pods_Fizz_Kidz_Inventory.framework */; };
+		CD4679F921E6C8E300D4E579 /* UITextField+DoneToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4679F821E6C8E300D4E579 /* UITextField+DoneToolbar.swift */; };
+		CD4679FB21E6D3C400D4E579 /* UIViewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4679FA21E6D3C400D4E579 /* UIViewController+Spinner.swift */; };
+		CD4679FD21E6E16300D4E579 /* ReceiveStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4679FC21E6E16300D4E579 /* ReceiveStockViewController.swift */; };
+		CD467A0021E72A5900D4E579 /* ViewStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */; };
+		CD467A0321E7366A00D4E579 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD467A0221E7366A00D4E579 /* StockTableViewCell.swift */; };
 		CD6154AC21E45651008E9F38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6154AB21E45651008E9F38 /* AppDelegate.swift */; };
-		CD6154AE21E45651008E9F38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6154AD21E45651008E9F38 /* ViewController.swift */; };
+		CD6154AE21E45651008E9F38 /* MoveStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6154AD21E45651008E9F38 /* MoveStockViewController.swift */; };
 		CD6154B121E45651008E9F38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6154AF21E45651008E9F38 /* Main.storyboard */; };
 		CD6154B321E45652008E9F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B221E45652008E9F38 /* Assets.xcassets */; };
 		CD6154B621E45652008E9F38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B421E45652008E9F38 /* LaunchScreen.storyboard */; };
+		CD6154BE21E45783008E9F38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8CDB5F25BDEBEFB501A08983 /* Pods_Fizz_Kidz_Inventory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fizz_Kidz_Inventory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE04400EF8A11BD40544B82C /* Pods-Fizz Kidz Inventory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fizz Kidz Inventory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory.debug.xcconfig"; sourceTree = "<group>"; };
+		CD4679F821E6C8E300D4E579 /* UITextField+DoneToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+DoneToolbar.swift"; sourceTree = "<group>"; };
+		CD4679FA21E6D3C400D4E579 /* UIViewController+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Spinner.swift"; sourceTree = "<group>"; };
+		CD4679FC21E6E16300D4E579 /* ReceiveStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveStockViewController.swift; sourceTree = "<group>"; };
+		CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStockViewController.swift; sourceTree = "<group>"; };
+		CD467A0221E7366A00D4E579 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		CD6154A821E45651008E9F38 /* Fizz Kidz Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fizz Kidz Inventory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6154AB21E45651008E9F38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD6154AD21E45651008E9F38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD6154AD21E45651008E9F38 /* MoveStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveStockViewController.swift; sourceTree = "<group>"; };
 		CD6154B021E45651008E9F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD6154B221E45652008E9F38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD6154B521E45652008E9F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD6154B721E45652008E9F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA81BA2739211E42792FE189 /* Pods-Fizz Kidz Inventory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fizz Kidz Inventory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +45,57 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5304614657A72461D9D512F1 /* Pods_Fizz_Kidz_Inventory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E2EA08A524DE159E3720BFE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE04400EF8A11BD40544B82C /* Pods-Fizz Kidz Inventory.debug.xcconfig */,
+				FA81BA2739211E42792FE189 /* Pods-Fizz Kidz Inventory.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD4679F721E6C8C400D4E579 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CD4679F821E6C8E300D4E579 /* UITextField+DoneToolbar.swift */,
+				CD4679FA21E6D3C400D4E579 /* UIViewController+Spinner.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CD4679FE21E6E16B00D4E579 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD467A0121E7364600D4E579 /* Table View Cells */,
+				CD6154AD21E45651008E9F38 /* MoveStockViewController.swift */,
+				CD4679FC21E6E16300D4E579 /* ReceiveStockViewController.swift */,
+				CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CD467A0121E7364600D4E579 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CD467A0221E7366A00D4E579 /* StockTableViewCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		CD61549F21E45651008E9F38 = {
 			isa = PBXGroup;
 			children = (
 				CD6154AA21E45651008E9F38 /* Fizz Kidz Inventory */,
 				CD6154A921E45651008E9F38 /* Products */,
+				4E2EA08A524DE159E3720BFE /* Pods */,
+				F6897A148BC5B125CA286566 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +110,24 @@
 		CD6154AA21E45651008E9F38 /* Fizz Kidz Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				CD4679FE21E6E16B00D4E579 /* ViewControllers */,
+				CD4679F721E6C8C400D4E579 /* Extensions */,
 				CD6154AB21E45651008E9F38 /* AppDelegate.swift */,
-				CD6154AD21E45651008E9F38 /* ViewController.swift */,
 				CD6154AF21E45651008E9F38 /* Main.storyboard */,
 				CD6154B221E45652008E9F38 /* Assets.xcassets */,
 				CD6154B421E45652008E9F38 /* LaunchScreen.storyboard */,
 				CD6154B721E45652008E9F38 /* Info.plist */,
+				CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */,
 			);
 			path = "Fizz Kidz Inventory";
+			sourceTree = "<group>";
+		};
+		F6897A148BC5B125CA286566 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CDB5F25BDEBEFB501A08983 /* Pods_Fizz_Kidz_Inventory.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD6154BA21E45652008E9F38 /* Build configuration list for PBXNativeTarget "Fizz Kidz Inventory" */;
 			buildPhases = (
+				DB91D48A47C6406306731FD3 /* [CP] Check Pods Manifest.lock */,
 				CD6154A421E45651008E9F38 /* Sources */,
 				CD6154A521E45651008E9F38 /* Frameworks */,
 				CD6154A621E45651008E9F38 /* Resources */,
+				8B8C16C370B4A53EC28CEAF0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6154B621E45652008E9F38 /* LaunchScreen.storyboard in Resources */,
+				CD6154BE21E45783008E9F38 /* GoogleService-Info.plist in Resources */,
 				CD6154B321E45652008E9F38 /* Assets.xcassets in Resources */,
 				CD6154B121E45651008E9F38 /* Main.storyboard in Resources */,
 			);
@@ -130,12 +199,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B8C16C370B4A53EC28CEAF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB91D48A47C6406306731FD3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fizz Kidz Inventory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD6154A421E45651008E9F38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6154AE21E45651008E9F38 /* ViewController.swift in Sources */,
+				CD467A0321E7366A00D4E579 /* StockTableViewCell.swift in Sources */,
+				CD4679FD21E6E16300D4E579 /* ReceiveStockViewController.swift in Sources */,
+				CD4679FB21E6D3C400D4E579 /* UIViewController+Spinner.swift in Sources */,
+				CD467A0021E72A5900D4E579 /* ViewStockViewController.swift in Sources */,
+				CD4679F921E6C8E300D4E579 /* UITextField+DoneToolbar.swift in Sources */,
+				CD6154AE21E45651008E9F38 /* MoveStockViewController.swift in Sources */,
 				CD6154AC21E45651008E9F38 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,10 +409,13 @@
 		};
 		CD6154BB21E45652008E9F38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE04400EF8A11BD40544B82C /* Pods-Fizz Kidz Inventory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2RBHLY34J;
 				INFOPLIST_FILE = "Fizz Kidz Inventory/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -297,10 +429,13 @@
 		};
 		CD6154BC21E45652008E9F38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA81BA2739211E42792FE189 /* Pods-Fizz Kidz Inventory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2RBHLY34J;
 				INFOPLIST_FILE = "Fizz Kidz Inventory/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
