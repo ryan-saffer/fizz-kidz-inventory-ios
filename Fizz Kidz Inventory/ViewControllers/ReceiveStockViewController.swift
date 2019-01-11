@@ -9,36 +9,39 @@
 import UIKit
 import FirebaseFirestore
 
-class ReceiveStockViewController: UIViewController {
+class ReceiveStockViewController: UIViewController, UITextFieldDelegate {
     
-    // IBOutlets
-    @IBOutlet weak var itemPickerView: UIPickerView!
-    @IBOutlet weak var qtyTextField: UITextField! {
-        didSet { qtyTextField?.addDoneToolbar() }
-    }
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var receiveButton: UIButton!
-    
-    // variables
-    var ingredients: [String] = [String]()
     
     // spinner
     var spinner: UIView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        self.ingredients = ["BICARB", "CIT_ACID", "PLATES"]
     }
     
-    @IBAction func reveiveStockButtonPressed(_ sender: Any) {
+    @IBAction func receiveStockButtonPressed(_ sender: Any) {
         
         let firestore: Firestore = Firestore.firestore()
-        let item = self.ingredients[self.itemPickerView.selectedRow(inComponent: 0)]
-        let qty = Float(self.qtyTextField.text!) ?? 0
+        
+        let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerDataSource
+        let locationCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! LocationPickerTableViewCell
+        let qtyCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! SelectQtyTableViewCell
+        
+        let item = itemCell.selectedItem.uppercased()
+        let location = locationCell.selectedItem.uppercased()
+        let qty = Float(qtyCell.qtyTextField.text!) ?? 0
         
         self.disableUI()
         
-        let docRef = firestore.document("WAREHOUSE/\(item)")
+        if (qty <= 0) {
+            self.displayAlert(title: "Quantity Invalid", message: "Enter a valid quantity and try again")
+            self.enableUI()
+            return
+        }
+        
+        let docRef = firestore.document("\(location)/\(item)")
         firestore.runTransaction({ (transaction, errorPointer) -> Any? in
             let document: DocumentSnapshot
             do {
@@ -68,6 +71,7 @@ class ReceiveStockViewController: UIViewController {
                 print("ERROR: \(err)")
             } else {
                 print("Transaction completed succesfully!")
+                self.displayAlert(title: "Success!", message: "\(qty) \(item)s succesfully received")
             }
             self.enableUI()
         }
@@ -75,32 +79,41 @@ class ReceiveStockViewController: UIViewController {
     
     func disableUI() {
         self.spinner = UIViewController.displaySpinner(onView: self.view)
-        self.qtyTextField.isEnabled = false
         self.receiveButton.isEnabled = false
     }
     
     func enableUI() {
         UIViewController.removeSpinner(spinner: self.spinner!)
-        self.qtyTextField.isEnabled = true
         self.receiveButton.isEnabled = true
     }
-}
-
-extension ReceiveStockViewController: UIPickerViewDelegate {
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.ingredients[row]
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
-extension ReceiveStockViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+extension ReceiveStockViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.ingredients.count
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath.row == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemPickerCell") as! IngredientPickerDataSource
+            cell.owner = self
+            return cell
+        }
+        else if (indexPath.row == 1){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "locationPickerCell") as! LocationPickerTableViewCell
+            cell.owner = self
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "qtyPickerCell") as! SelectQtyTableViewCell
+            return cell
+        }
+       
     }
-    
-    
 }

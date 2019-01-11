@@ -19,6 +19,13 @@
 		CD6154B321E45652008E9F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B221E45652008E9F38 /* Assets.xcassets */; };
 		CD6154B621E45652008E9F38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B421E45652008E9F38 /* LaunchScreen.storyboard */; };
 		CD6154BE21E45783008E9F38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */; };
+		CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */; };
+		CD8D560321E8DE7D00DE5F0F /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */; };
+		CD8D560521E8E0FB00DE5F0F /* LocationPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */; };
+		CDD5244721E78BDD003CACF0 /* IngredientPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244621E78BDD003CACF0 /* IngredientPickerDataSource.swift */; };
+		CDD5244921E89F74003CACF0 /* LocationPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */; };
+		CDD5244C21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */; };
+		CDD5245521E8C8DC003CACF0 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5245421E8C8DC003CACF0 /* PickerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +44,13 @@
 		CD6154B521E45652008E9F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD6154B721E45652008E9F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQtyTableViewCell.swift; sourceTree = "<group>"; };
+		CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
+		CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerDataSource.swift; sourceTree = "<group>"; };
+		CDD5244621E78BDD003CACF0 /* IngredientPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerDataSource.swift; sourceTree = "<group>"; };
+		CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerTableViewCell.swift; sourceTree = "<group>"; };
+		CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerViewDataSource.swift; sourceTree = "<group>"; };
+		CDD5245421E8C8DC003CACF0 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		FA81BA2739211E42792FE189 /* Pods-Fizz Kidz Inventory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fizz Kidz Inventory.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,9 +87,8 @@
 		CD4679FE21E6E16B00D4E579 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD467A0121E7364600D4E579 /* Table View Cells */,
-				CD6154AD21E45651008E9F38 /* MoveStockViewController.swift */,
 				CD4679FC21E6E16300D4E579 /* ReceiveStockViewController.swift */,
+				CD6154AD21E45651008E9F38 /* MoveStockViewController.swift */,
 				CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */,
 			);
 			path = ViewControllers;
@@ -84,7 +97,9 @@
 		CD467A0121E7364600D4E579 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CDD5244F21E8BE07003CACF0 /* Pickers */,
 				CD467A0221E7366A00D4E579 /* StockTableViewCell.swift */,
+				CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -110,6 +125,8 @@
 		CD6154AA21E45651008E9F38 /* Fizz Kidz Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				CDD5244A21E8B3A0003CACF0 /* PickerViews */,
+				CD467A0121E7364600D4E579 /* Table View Cells */,
 				CD4679FE21E6E16B00D4E579 /* ViewControllers */,
 				CD4679F721E6C8C400D4E579 /* Extensions */,
 				CD6154AB21E45651008E9F38 /* AppDelegate.swift */,
@@ -120,6 +137,26 @@
 				CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */,
 			);
 			path = "Fizz Kidz Inventory";
+			sourceTree = "<group>";
+		};
+		CDD5244A21E8B3A0003CACF0 /* PickerViews */ = {
+			isa = PBXGroup;
+			children = (
+				CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */,
+				CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */,
+				CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */,
+			);
+			path = PickerViews;
+			sourceTree = "<group>";
+		};
+		CDD5244F21E8BE07003CACF0 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				CDD5245421E8C8DC003CACF0 /* PickerTableViewCell.swift */,
+				CDD5244621E78BDD003CACF0 /* IngredientPickerDataSource.swift */,
+				CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */,
+			);
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 		F6897A148BC5B125CA286566 /* Frameworks */ = {
@@ -259,11 +296,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */,
+				CDD5244721E78BDD003CACF0 /* IngredientPickerDataSource.swift in Sources */,
 				CD467A0321E7366A00D4E579 /* StockTableViewCell.swift in Sources */,
+				CDD5245521E8C8DC003CACF0 /* PickerTableViewCell.swift in Sources */,
+				CD8D560321E8DE7D00DE5F0F /* PickerViewDataSource.swift in Sources */,
+				CDD5244921E89F74003CACF0 /* LocationPickerTableViewCell.swift in Sources */,
 				CD4679FD21E6E16300D4E579 /* ReceiveStockViewController.swift in Sources */,
 				CD4679FB21E6D3C400D4E579 /* UIViewController+Spinner.swift in Sources */,
 				CD467A0021E72A5900D4E579 /* ViewStockViewController.swift in Sources */,
+				CD8D560521E8E0FB00DE5F0F /* LocationPickerDataSource.swift in Sources */,
 				CD4679F921E6C8E300D4E579 /* UITextField+DoneToolbar.swift in Sources */,
+				CDD5244C21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift in Sources */,
 				CD6154AE21E45651008E9F38 /* MoveStockViewController.swift in Sources */,
 				CD6154AC21E45651008E9F38 /* AppDelegate.swift in Sources */,
 			);
