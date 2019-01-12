@@ -10,12 +10,25 @@ import Foundation
 
 struct Items {
     var itemIds: [String: String] =
-        ["Bicarb": "BICARB",
-         "Citric Acid": "CIT_ACID",
-         "Plates": "PLATES"]
+        [
+            "Bicarb": "BICARB",
+            "Citric Acid": "CIT_ACID",
+            "Plates": "PLATES"
+        ]
     
-    var itemUnits : [String: String] =
-        ["BICARB": "KG",
-         "CIT_ACID": "KG",
-         "PLATES": "PCS"]
+    var itemUnits: [String: String] =
+        [
+            "BICARB": "KG",
+            "CIT_ACID": "KG",
+            "PLATES": "PCS"
+        ]
+}
+
+struct Locations {
+    var names: [String] =
+        [
+            "Warehouse",
+            "Malvern",
+            "Balwyn"
+        ]
 }

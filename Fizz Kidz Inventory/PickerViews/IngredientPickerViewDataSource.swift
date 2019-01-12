@@ -12,6 +12,11 @@ class IngredientPickerViewDataSource: PickerViewDataSource {
     
     override init() {
         super.init()
-        self.data = ["BICARB","CIT_ACID","PLATES"]
+        let items = Items()
+        self.data = []
+        for item in items.itemIds {
+            self.data.append(item.key)
+        }
+        self.data.sort()
     }
 }

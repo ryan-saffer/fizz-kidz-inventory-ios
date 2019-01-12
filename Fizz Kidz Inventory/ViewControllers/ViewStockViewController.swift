@@ -55,14 +55,17 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
                 print("ERROR: \(err)")
             } else {
                 self.locationData.removeAll()
+                let items = Items()
                 for ingredient in querySnapshot!.documents {
                     let value = ingredient.data()["QTY"]!
                     let unit = ingredient.data()["UNIT"]!
-                    let name = ingredient.documentID
+                    let itemID = ingredient.documentID
+                    let itemName = (items.itemIds as NSDictionary).allKeys(for: itemID) as! [String]
                     self.locationData.append([
-                                        name,
+                                        itemName[0],
                                         String(describing: value),
-                                        String(describing: unit)])
+                                        String(describing: unit)
+                                        ])
                 }
                 self.tableView.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
@@ -79,7 +82,7 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier") as! StockTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! StockTableViewCell
         cell.nameLabel.text = self.locationData[indexPath.row][0]
         cell.qtyLabel.text = self.locationData[indexPath.row][1]
         cell.unitLabel.text = self.locationData[indexPath.row][2]
@@ -88,12 +91,12 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
     
     func refresh() {
         self.tableView.refreshControl?.beginRefreshing()
+        self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-(self.tableView.refreshControl?.frame.size.height)!), animated: true)
         self.reloadData()
     }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
         self.reloadData()
-//        refreshControl.endRefreshing()
     }
     
     @objc func segmentChanged(segment: UISegmentedControl) {

@@ -23,6 +23,7 @@
 		CD8D560321E8DE7D00DE5F0F /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */; };
 		CD8D560521E8E0FB00DE5F0F /* LocationPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */; };
 		CD8D560821E9AEDB00DE5F0F /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */; };
+		CD8D560A21E9B2B100DE5F0F /* ManageStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560921E9B2B100DE5F0F /* ManageStockViewController.swift */; };
 		CDD5244721E78BDD003CACF0 /* IngredientPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244621E78BDD003CACF0 /* IngredientPickerTableViewCell.swift */; };
 		CDD5244921E89F74003CACF0 /* LocationPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */; };
 		CDD5244C21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */; };
@@ -49,6 +50,7 @@
 		CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerDataSource.swift; sourceTree = "<group>"; };
 		CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
+		CD8D560921E9B2B100DE5F0F /* ManageStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageStockViewController.swift; sourceTree = "<group>"; };
 		CDD5244621E78BDD003CACF0 /* IngredientPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerViewDataSource.swift; sourceTree = "<group>"; };
@@ -89,9 +91,8 @@
 		CD4679FE21E6E16B00D4E579 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD4679FC21E6E16300D4E579 /* ReceiveStockViewController.swift */,
-				CD6154AD21E45651008E9F38 /* MoveStockViewController.swift */,
 				CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */,
+				CD8D560B21E9B2B700DE5F0F /* StockViewControllers */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -148,6 +149,16 @@
 				CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		CD8D560B21E9B2B700DE5F0F /* StockViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD8D560921E9B2B100DE5F0F /* ManageStockViewController.swift */,
+				CD4679FC21E6E16300D4E579 /* ReceiveStockViewController.swift */,
+				CD6154AD21E45651008E9F38 /* MoveStockViewController.swift */,
+			);
+			path = StockViewControllers;
 			sourceTree = "<group>";
 		};
 		CDD5244A21E8B3A0003CACF0 /* PickerViews */ = {
@@ -313,6 +324,7 @@
 				CDD5245521E8C8DC003CACF0 /* PickerTableViewCell.swift in Sources */,
 				CD8D560321E8DE7D00DE5F0F /* PickerViewDataSource.swift in Sources */,
 				CDD5244921E89F74003CACF0 /* LocationPickerTableViewCell.swift in Sources */,
+				CD8D560A21E9B2B100DE5F0F /* ManageStockViewController.swift in Sources */,
 				CD4679FD21E6E16300D4E579 /* ReceiveStockViewController.swift in Sources */,
 				CD4679FB21E6D3C400D4E579 /* UIViewController+Spinner.swift in Sources */,
 				CD467A0021E72A5900D4E579 /* ViewStockViewController.swift in Sources */,

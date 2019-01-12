@@ -6,6 +6,8 @@
 //  Copyright © 2019 Fizz Kidz. All rights reserved.
 //
 
+// see https://stackoverflow.com/a/37517958/7870403
+
 import UIKit
 
 class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate {
@@ -14,7 +16,7 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
     
-    weak var owner: UIViewController! = nil
+    weak var owner: ManageStockViewController! = nil
     var picker: UIPickerView! = UIPickerView()
     var pickerDataSource: PickerViewDataSource!
     var selectedItem: String? = nil
@@ -67,5 +69,6 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDel
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.itemLabel.text = self.pickerDataSource.data[row]
+        self.selectedItem = self.pickerDataSource.data[self.picker.selectedRow(inComponent: 0)]
     }
 }

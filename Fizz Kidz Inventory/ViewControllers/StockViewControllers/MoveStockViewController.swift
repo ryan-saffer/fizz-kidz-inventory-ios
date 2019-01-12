@@ -9,14 +9,13 @@
 import UIKit
 import FirebaseFirestore
 
-class MoveStockViewController: UIViewController {
+class MoveStockViewController: ManageStockViewController {
     
     //================================================================================
     // Properties
     //================================================================================
     
     // IBOutlets
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var moveItemsButton: UIButton!
     
     // spinner
@@ -32,43 +31,58 @@ class MoveStockViewController: UIViewController {
 
     @IBAction func moveButtonPressed(_ sender: Any) {
         
-        let firestore: Firestore = Firestore.firestore()
+        let items = Items()
         
         let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerTableViewCell
         let fromCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! LocationPickerTableViewCell
         let toCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! LocationPickerTableViewCell
         let qtyCell = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! SelectQtyTableViewCell
         
-        guard let item = itemCell.selectedItem?.uppercased() else {
+        guard let itemName = itemCell.selectedItem else {
             self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
             return
         }
-        guard let from = fromCell.selectedItem?.uppercased() else {
+        let itemID = String(describing: items.itemIds[itemName]!)
+        
+        guard let from = fromCell.selectedItem else {
             self.displayAlert(title: "Select 'From' location", message: "Tap 'Select' to select the location the item is being moved from")
             return
         }
-        guard let to = toCell.selectedItem?.uppercased() else {
+        guard let to = toCell.selectedItem else {
             self.displayAlert(title: "Select 'To' location", message: "Tap 'Select' to select the location the item is being moved to")
             return
         }
-        let amount = Float(qtyCell.qtyTextField.text!) ?? 0
+        let qty = Float(qtyCell.qtyTextField.text!) ?? 0
+        let unit = qtyCell.unitLabel.text!
         
-        self.disableUI()
-        
-        if (amount <= 0) {
+        if (qty <= 0) {
             displayAlert(title: "Quantity invalid", message: "Change the quantity value and try again")
-            self.enableUI()
             return
         }
         
         if (from == to) {
             displayAlert(title: "Locations must be different", message: "Make sure the stock is being moved between two separate locations")
-            self.enableUI()
             return
         }
         
-        let fromRef = firestore.document("\(from)/\(item)")
-        let toRef = firestore.document("\(to)/\(item)")
+        let confirmationAlert = UIAlertController(title: "Confirm move", message: "This will move \(qty) \(unit)s of \(itemName) from \(from) to \(to)", preferredStyle: UIAlertController.Style.alert)
+        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action: UIAlertAction!) in
+            self.performMove(itemName: itemName, itemID: itemID, from: from, to: to, qty: qty, unit: unit)
+        }))
+        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            return
+        }))
+        present(confirmationAlert, animated: true, completion: nil)
+    }
+    
+    func performMove(itemName: String, itemID: String, from: String, to: String, qty: Float, unit: String) {
+        
+        let firestore: Firestore = Firestore.firestore()
+        
+        self.disableUI()
+        
+        let fromRef = firestore.document("\(from.uppercased())/\(itemID)")
+        let toRef = firestore.document("\(to.uppercased())/\(itemID)")
         
         firestore.runTransaction({ (transaction, errorPointer) -> Any? in
             let fromDocument: DocumentSnapshot
@@ -109,33 +123,33 @@ class MoveStockViewController: UIViewController {
             print("Old To Value: \(oldToValue)")
             
             // if not enough stock to perform move, cancel
-            if (amount > oldFromValue.floatValue) {
+            if (qty > oldFromValue.floatValue) {
                 let error = NSError(
                     domain: "FirestoreLogicDomain",
                     code: -1,
                     userInfo: [
                         NSLocalizedDescriptionKey: "Not enough stock to perform move"
-                        ]
+                    ]
                 )
                 errorPointer?.pointee = error
                 return nil
             }
             
-            transaction.updateData(["QTY": oldFromValue.floatValue - amount], forDocument: fromRef)
-            transaction.updateData(["QTY": oldToValue.floatValue + amount], forDocument: toRef)
+            transaction.updateData(["QTY": oldFromValue.floatValue - qty], forDocument: fromRef)
+            transaction.updateData(["QTY": oldToValue.floatValue + qty], forDocument: toRef)
             return nil
             
         }) { (object, error) in
             if let error = error {
                 // react to errors accordingly
                 if (error.localizedDescription == "Not enough stock to perform move") {
-                    self.displayAlert(title: "Not enough stock", message: "Not enough stock to perform move")
+                    self.displayAlert(title: "Not enough stock", message: "No changes made.\nPlease try again")
                 } else {
                     self.displayAlert(title: "Something went wrong", message: "No changes made.\n Please try again")
                 }
                 print("Transaction failed: \(error)")
             } else {
-                self.displayAlert(title: "Done!", message: "\(amount) \(item)s moved from \(from) to \(to)")
+                self.displayAlert(title: "Success!", message: "\(qty) \(unit)s of \(itemName) moved from \(from) to \(to)")
                 print("Transaction succesfully commited!")
             }
             self.enableUI()
