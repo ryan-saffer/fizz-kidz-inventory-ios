@@ -93,7 +93,7 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
         self.reloadData()
-        refreshControl.endRefreshing()
+//        refreshControl.endRefreshing()
     }
     
     @objc func segmentChanged(segment: UISegmentedControl) {

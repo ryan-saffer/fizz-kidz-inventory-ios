@@ -15,16 +15,9 @@ class MoveStockViewController: UIViewController {
     // Properties
     //================================================================================
     
-    @IBOutlet weak var itemPickerView: UIPickerView!
-    @IBOutlet weak var fromPickerView: UIPickerView!
-    @IBOutlet weak var toPickerView: UIPickerView!
-    @IBOutlet weak var amountTextField: UITextField! {
-        didSet { amountTextField?.addDoneToolbar() }
-    }
+    // IBOutlets
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var moveItemsButton: UIButton!
-    
-    var ingredients: [String] = [String]()
-    var locations: [String] = [String]()
     
     // spinner
     var spinner: UIView? = nil
@@ -35,18 +28,30 @@ class MoveStockViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.ingredients = ["BICARB", "CIT_ACID", "PLATES"]
-        self.locations = ["Warehouse","Malvern","Balwyn"]
     }
 
     @IBAction func moveButtonPressed(_ sender: Any) {
         
         let firestore: Firestore = Firestore.firestore()
-        let item = self.ingredients[itemPickerView.selectedRow(inComponent: 0)]
-        let amount = Float(self.amountTextField.text!) ?? 0
-        let from = self.locations[fromPickerView.selectedRow(inComponent: 0)].uppercased()
-        let to = self.locations[toPickerView.selectedRow(inComponent: 0)].uppercased()
+        
+        let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerTableViewCell
+        let fromCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! LocationPickerTableViewCell
+        let toCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! LocationPickerTableViewCell
+        let qtyCell = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! SelectQtyTableViewCell
+        
+        guard let item = itemCell.selectedItem?.uppercased() else {
+            self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
+            return
+        }
+        guard let from = fromCell.selectedItem?.uppercased() else {
+            self.displayAlert(title: "Select 'From' location", message: "Tap 'Select' to select the location the item is being moved from")
+            return
+        }
+        guard let to = toCell.selectedItem?.uppercased() else {
+            self.displayAlert(title: "Select 'To' location", message: "Tap 'Select' to select the location the item is being moved to")
+            return
+        }
+        let amount = Float(qtyCell.qtyTextField.text!) ?? 0
         
         self.disableUI()
         
@@ -126,7 +131,7 @@ class MoveStockViewController: UIViewController {
                 if (error.localizedDescription == "Not enough stock to perform move") {
                     self.displayAlert(title: "Not enough stock", message: "Not enough stock to perform move")
                 } else {
-                    self.displayAlert(title: "Something went wrong", message: "No changes made to the inventory, please try again")
+                    self.displayAlert(title: "Something went wrong", message: "No changes made.\n Please try again")
                 }
                 print("Transaction failed: \(error)")
             } else {
@@ -140,13 +145,11 @@ class MoveStockViewController: UIViewController {
     func disableUI() {
         self.spinner = UIViewController.displaySpinner(onView: self.view)
         self.moveItemsButton.isEnabled = false
-        self.amountTextField.isEnabled = false
     }
     
     func enableUI() {
         UIViewController.removeSpinner(spinner: self.spinner!)
         self.moveItemsButton.isEnabled = true
-        self.amountTextField.isEnabled = true
     }
     
     func displayAlert(title: String, message: String) {
@@ -160,32 +163,31 @@ class MoveStockViewController: UIViewController {
 // Extensions
 //================================================================================
 
-// MARK: UIPickerViewDelegate Methods
-extension MoveStockViewController: UIPickerViewDelegate {
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if (pickerView.tag == 1) {
-            return self.ingredients[row]
+// MARK: UITableViewDataSource
+extension MoveStockViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath.row == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemPickerCell") as! IngredientPickerTableViewCell
+            cell.owner = self
+            return cell
+        } else if (indexPath.row == 1) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "locationPickerCell") as! LocationPickerTableViewCell
+            cell.owner = self
+            cell.headerLabel.text = "From"
+            return cell
+        } else if (indexPath.row == 2) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "locationPickerCell") as! LocationPickerTableViewCell
+            cell.owner = self
+            cell.headerLabel.text = "To"
+            return cell
         } else {
-            return self.locations[row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "qtyPickerCell") as! SelectQtyTableViewCell
+            return cell
         }
-    }
-}
-
-// MARK: UIPickerViewDataSource Methods
-extension MoveStockViewController: UIPickerViewDataSource {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if (pickerView.tag == 1) {
-            return self.ingredients.count
-        }
-        else {
-            return self.locations.count
-        }
-        
     }
 }

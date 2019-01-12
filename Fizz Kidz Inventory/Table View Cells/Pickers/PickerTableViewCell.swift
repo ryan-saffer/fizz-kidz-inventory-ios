@@ -12,11 +12,12 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDel
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
     
-    weak var owner: ReceiveStockViewController! = nil
+    weak var owner: UIViewController! = nil
     var picker: UIPickerView! = UIPickerView()
     var pickerDataSource: PickerViewDataSource!
-    var selectedItem: String!
+    var selectedItem: String? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,7 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDel
     @objc func pickerItemSelected(_ sender: UIButton) {
         let selectedItem = self.pickerDataSource.data[self.picker.selectedRow(inComponent: 0)]
         self.itemLabel.text = selectedItem
+        self.selectedItem = selectedItem
         
         self.textField.resignFirstResponder()
     }
@@ -65,6 +67,5 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDel
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.itemLabel.text = self.pickerDataSource.data[row]
-        self.selectedItem = self.pickerDataSource.data[row]
     }
 }

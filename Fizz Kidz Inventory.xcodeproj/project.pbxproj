@@ -22,7 +22,8 @@
 		CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */; };
 		CD8D560321E8DE7D00DE5F0F /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */; };
 		CD8D560521E8E0FB00DE5F0F /* LocationPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */; };
-		CDD5244721E78BDD003CACF0 /* IngredientPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244621E78BDD003CACF0 /* IngredientPickerDataSource.swift */; };
+		CD8D560821E9AEDB00DE5F0F /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */; };
+		CDD5244721E78BDD003CACF0 /* IngredientPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244621E78BDD003CACF0 /* IngredientPickerTableViewCell.swift */; };
 		CDD5244921E89F74003CACF0 /* LocationPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */; };
 		CDD5244C21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */; };
 		CDD5245521E8C8DC003CACF0 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5245421E8C8DC003CACF0 /* PickerTableViewCell.swift */; };
@@ -47,7 +48,8 @@
 		CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQtyTableViewCell.swift; sourceTree = "<group>"; };
 		CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerDataSource.swift; sourceTree = "<group>"; };
-		CDD5244621E78BDD003CACF0 /* IngredientPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerDataSource.swift; sourceTree = "<group>"; };
+		CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
+		CDD5244621E78BDD003CACF0 /* IngredientPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerViewDataSource.swift; sourceTree = "<group>"; };
 		CDD5245421E8C8DC003CACF0 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,9 +127,10 @@
 		CD6154AA21E45651008E9F38 /* Fizz Kidz Inventory */ = {
 			isa = PBXGroup;
 			children = (
-				CDD5244A21E8B3A0003CACF0 /* PickerViews */,
-				CD467A0121E7364600D4E579 /* Table View Cells */,
 				CD4679FE21E6E16B00D4E579 /* ViewControllers */,
+				CD467A0121E7364600D4E579 /* Table View Cells */,
+				CDD5244A21E8B3A0003CACF0 /* PickerViews */,
+				CD8D560621E9AEA400DE5F0F /* Structs */,
 				CD4679F721E6C8C400D4E579 /* Extensions */,
 				CD6154AB21E45651008E9F38 /* AppDelegate.swift */,
 				CD6154AF21E45651008E9F38 /* Main.storyboard */,
@@ -137,6 +140,14 @@
 				CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */,
 			);
 			path = "Fizz Kidz Inventory";
+			sourceTree = "<group>";
+		};
+		CD8D560621E9AEA400DE5F0F /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */,
+			);
+			path = Structs;
 			sourceTree = "<group>";
 		};
 		CDD5244A21E8B3A0003CACF0 /* PickerViews */ = {
@@ -153,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				CDD5245421E8C8DC003CACF0 /* PickerTableViewCell.swift */,
-				CDD5244621E78BDD003CACF0 /* IngredientPickerDataSource.swift */,
+				CDD5244621E78BDD003CACF0 /* IngredientPickerTableViewCell.swift */,
 				CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */,
 			);
 			path = Pickers;
@@ -297,7 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */,
-				CDD5244721E78BDD003CACF0 /* IngredientPickerDataSource.swift in Sources */,
+				CDD5244721E78BDD003CACF0 /* IngredientPickerTableViewCell.swift in Sources */,
 				CD467A0321E7366A00D4E579 /* StockTableViewCell.swift in Sources */,
 				CDD5245521E8C8DC003CACF0 /* PickerTableViewCell.swift in Sources */,
 				CD8D560321E8DE7D00DE5F0F /* PickerViewDataSource.swift in Sources */,
@@ -306,6 +317,7 @@
 				CD4679FB21E6D3C400D4E579 /* UIViewController+Spinner.swift in Sources */,
 				CD467A0021E72A5900D4E579 /* ViewStockViewController.swift in Sources */,
 				CD8D560521E8E0FB00DE5F0F /* LocationPickerDataSource.swift in Sources */,
+				CD8D560821E9AEDB00DE5F0F /* GlobalVar.swift in Sources */,
 				CD4679F921E6C8E300D4E579 /* UITextField+DoneToolbar.swift in Sources */,
 				CDD5244C21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift in Sources */,
 				CD6154AE21E45651008E9F38 /* MoveStockViewController.swift in Sources */,

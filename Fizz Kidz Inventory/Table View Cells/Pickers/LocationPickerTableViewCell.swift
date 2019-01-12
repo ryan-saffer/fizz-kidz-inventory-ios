@@ -16,6 +16,12 @@ class LocationPickerTableViewCell: PickerTableViewCell {
         
         self.pickerDataSource = LocationPickerDataSource()
         self.picker.dataSource = self.pickerDataSource
-        self.selectedItem = "Warehouse"
+    }
+    
+    override func pickerItemSelected(_ sender: UIButton) {
+        super.pickerItemSelected(sender)
+        
+        // alert the table view an item has been selected, in order to update qty cell
+        //self.owner.itemDidChange()
     }
 }

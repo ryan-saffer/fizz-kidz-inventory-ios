@@ -11,6 +11,11 @@ import FirebaseFirestore
 
 class ReceiveStockViewController: UIViewController, UITextFieldDelegate {
     
+    //================================================================================
+    // Properties
+    //================================================================================
+    
+    // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var receiveButton: UIButton!
     
@@ -21,16 +26,26 @@ class ReceiveStockViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
     }
     
+    //================================================================================
+    // Methods
+    //================================================================================
+    
     @IBAction func receiveStockButtonPressed(_ sender: Any) {
         
         let firestore: Firestore = Firestore.firestore()
         
-        let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerDataSource
+        let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerTableViewCell
         let locationCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! LocationPickerTableViewCell
         let qtyCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! SelectQtyTableViewCell
         
-        let item = itemCell.selectedItem.uppercased()
-        let location = locationCell.selectedItem.uppercased()
+        guard let item = itemCell.selectedItem?.uppercased() else {
+            self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
+            return
+        }
+        guard let location = locationCell.selectedItem?.uppercased() else {
+            self.displayAlert(title: "Select Location", message: "Tap 'Select' to select the location the stock is being received")
+            return
+        }
         let qty = Float(qtyCell.qtyTextField.text!) ?? 0
         
         self.disableUI()
@@ -68,6 +83,7 @@ class ReceiveStockViewController: UIViewController, UITextFieldDelegate {
             
         }) { (object, err) in
             if let err = err {
+                self.displayAlert(title: "Something went wrong", message: "No changes made.\nPlease try again")
                 print("ERROR: \(err)")
             } else {
                 print("Transaction completed succesfully!")
@@ -94,6 +110,11 @@ class ReceiveStockViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+//================================================================================
+// Extensions
+//================================================================================
+
+// MARK: UITableViewDataSource
 extension ReceiveStockViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -101,7 +122,7 @@ extension ReceiveStockViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "itemPickerCell") as! IngredientPickerDataSource
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemPickerCell") as! IngredientPickerTableViewCell
             cell.owner = self
             return cell
         }

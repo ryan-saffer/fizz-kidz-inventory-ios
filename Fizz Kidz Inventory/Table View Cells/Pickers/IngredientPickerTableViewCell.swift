@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IngredientPickerDataSource: PickerTableViewCell {
+class IngredientPickerTableViewCell: PickerTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,6 +16,5 @@ class IngredientPickerDataSource: PickerTableViewCell {
         
         self.pickerDataSource = IngredientPickerViewDataSource()
         self.picker.dataSource = self.pickerDataSource
-        self.selectedItem = "BICARB"
     }
 }
