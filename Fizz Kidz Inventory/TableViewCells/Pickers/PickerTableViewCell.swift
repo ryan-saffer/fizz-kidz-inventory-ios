@@ -10,8 +10,13 @@
 
 import UIKit
 
-class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate {
+class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
     
+    //================================================================================
+    // MARK: - Properties
+    //================================================================================
+    
+    // IBOutlets
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
@@ -20,6 +25,10 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDel
     var picker: UIPickerView! = UIPickerView()
     var pickerDataSource: PickerViewDataSource!
     var selectedItem: String? = nil
+    
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,8 +70,16 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDel
         doneButton.addTarget(self, action: #selector(pickerItemSelected(_:)), for: UIControl.Event.touchUpInside) // set button click event
         sender.inputView = inputView
     }
+}
+
+//================================================================================
+// MARK: - Extensions
+//================================================================================
+
+extension PickerTableViewCell: UIPickerViewDelegate {
     
-    // MARK: UIPickerViewDelegate Protocol
+    // MARK: UIPickerViewDelegate
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.pickerDataSource.data[row]
     }

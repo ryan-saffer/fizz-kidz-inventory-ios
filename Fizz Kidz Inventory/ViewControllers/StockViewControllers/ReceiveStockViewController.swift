@@ -9,25 +9,15 @@
 import UIKit
 import FirebaseFirestore
 
-class ReceiveStockViewController: ManageStockViewController, UITextFieldDelegate {
+class ReceiveStockViewController: ManageStockViewController {
     
     //================================================================================
-    // Properties
+    // MARK: - Methods
     //================================================================================
-    
-    // IBOutlets
-    @IBOutlet weak var receiveButton: UIButton!
-    
-    // spinner
-    var spinner: UIView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    //================================================================================
-    // Methods
-    //================================================================================
     
     @IBAction func receiveStockButtonPressed(_ sender: Any) {
         
@@ -59,9 +49,7 @@ class ReceiveStockViewController: ManageStockViewController, UITextFieldDelegate
         confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action: UIAlertAction!) in
             self.reveiveStock(itemName: itemName, itemID: itemID, location: location, qty: qty, unit: unit)
         }))
-        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            return
-        }))
+        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(confirmationAlert, animated: true, completion: nil)
     }
     
@@ -107,30 +95,16 @@ class ReceiveStockViewController: ManageStockViewController, UITextFieldDelegate
             self.enableUI()
         }
     }
-    
-    func disableUI() {
-        self.spinner = UIViewController.displaySpinner(onView: self.view)
-        self.receiveButton.isEnabled = false
-    }
-    
-    func enableUI() {
-        UIViewController.removeSpinner(spinner: self.spinner!)
-        self.receiveButton.isEnabled = true
-    }
-    
-    func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
 }
 
 //================================================================================
-// Extensions
+// MARK: - Extensions
 //================================================================================
 
-// MARK: UITableViewDataSource
 extension ReceiveStockViewController: UITableViewDataSource {
+    
+    // MARK: UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

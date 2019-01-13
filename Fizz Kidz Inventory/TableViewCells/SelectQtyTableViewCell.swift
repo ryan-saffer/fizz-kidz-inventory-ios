@@ -10,6 +10,10 @@ import UIKit
 
 class SelectQtyTableViewCell: UITableViewCell {
 
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
+    
     @IBOutlet weak var qtyTextField: UITextField! {
         didSet { qtyTextField?.addDoneToolbar() }
     }

@@ -10,11 +10,19 @@ import UIKit
 
 class StockTableViewCell: UITableViewCell {
 
+    //================================================================================
+    // MARK: - Properties
+    //================================================================================
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var qtyLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
     
     @IBOutlet weak var circleIcon: UIImageView!
+    
+    //================================================================================
+    // Mark: - Methods
+    //================================================================================
     
     override func awakeFromNib() {
         super.awakeFromNib()

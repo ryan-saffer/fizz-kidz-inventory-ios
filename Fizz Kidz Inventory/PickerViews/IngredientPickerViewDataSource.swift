@@ -10,6 +10,10 @@ import UIKit
 
 class IngredientPickerViewDataSource: PickerViewDataSource {
     
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
+    
     override init() {
         super.init()
         let items = Items()

@@ -12,17 +12,14 @@ import FirebaseFirestore
 class MoveStockViewController: ManageStockViewController {
     
     //================================================================================
-    // Properties
+    // MARK: - Properties
     //================================================================================
     
     // IBOutlets
     @IBOutlet weak var moveItemsButton: UIButton!
     
-    // spinner
-    var spinner: UIView? = nil
-    
     //================================================================================
-    // Methods
+    // MARK: - Methods
     //================================================================================
     
     override func viewDidLoad() {
@@ -69,9 +66,7 @@ class MoveStockViewController: ManageStockViewController {
         confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action: UIAlertAction!) in
             self.performMove(itemName: itemName, itemID: itemID, from: from, to: to, qty: qty, unit: unit)
         }))
-        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            return
-        }))
+        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(confirmationAlert, animated: true, completion: nil)
     }
     
@@ -155,30 +150,15 @@ class MoveStockViewController: ManageStockViewController {
             self.enableUI()
         }
     }
-    
-    func disableUI() {
-        self.spinner = UIViewController.displaySpinner(onView: self.view)
-        self.moveItemsButton.isEnabled = false
-    }
-    
-    func enableUI() {
-        UIViewController.removeSpinner(spinner: self.spinner!)
-        self.moveItemsButton.isEnabled = true
-    }
-    
-    func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
 }
 
 //================================================================================
-// Extensions
+// MARK: - Extensions
 //================================================================================
 
-// MARK: UITableViewDataSource
 extension MoveStockViewController: UITableViewDataSource {
+    
+    // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4

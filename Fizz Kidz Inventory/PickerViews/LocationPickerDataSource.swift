@@ -10,6 +10,9 @@ import UIKit
 
 class LocationPickerDataSource: PickerViewDataSource {
 
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
     override init() {
         super.init()
         let locations = Locations()

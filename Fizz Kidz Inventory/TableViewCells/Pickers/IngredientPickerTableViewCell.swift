@@ -10,6 +10,10 @@ import UIKit
 
 class IngredientPickerTableViewCell: PickerTableViewCell {
     
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

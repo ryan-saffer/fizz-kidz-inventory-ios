@@ -10,9 +10,12 @@ import UIKit
 
 class LocationPickerTableViewCell: PickerTableViewCell {
 
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.pickerDataSource = LocationPickerDataSource()
         self.picker.dataSource = self.pickerDataSource

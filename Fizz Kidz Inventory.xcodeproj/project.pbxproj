@@ -97,14 +97,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		CD467A0121E7364600D4E579 /* Table View Cells */ = {
+		CD467A0121E7364600D4E579 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				CDD5244F21E8BE07003CACF0 /* Pickers */,
 				CD467A0221E7366A00D4E579 /* StockTableViewCell.swift */,
 				CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */,
 			);
-			path = "Table View Cells";
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		CD61549F21E45651008E9F38 = {
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				CD4679FE21E6E16B00D4E579 /* ViewControllers */,
-				CD467A0121E7364600D4E579 /* Table View Cells */,
+				CD467A0121E7364600D4E579 /* TableViewCells */,
 				CDD5244A21E8B3A0003CACF0 /* PickerViews */,
 				CD8D560621E9AEA400DE5F0F /* Structs */,
 				CD4679F721E6C8C400D4E579 /* Extensions */,

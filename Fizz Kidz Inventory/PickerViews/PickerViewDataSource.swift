@@ -10,7 +10,15 @@ import UIKit
 
 class PickerViewDataSource: NSObject, UIPickerViewDataSource {
     
+    //================================================================================
+    // MARK: - Properties
+    //================================================================================
+    
     var data: [String]!
+    
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -19,6 +27,4 @@ class PickerViewDataSource: NSObject, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.data.count
     }
-    
-
 }

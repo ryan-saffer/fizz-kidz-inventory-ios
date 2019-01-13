@@ -8,15 +8,26 @@
 
 import UIKit
 
-class ManageStockViewController: UIViewController, UITableViewDelegate {
+class ManageStockViewController: UIViewController {
     
+    //================================================================================
+    // MARK: - Properties
+    //================================================================================
+    
+    // IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    
+    // spinner
+    var spinner: UIView? = nil
+    
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.delegate = self
-        // Do any additional setup after loading the view.
     }
     
     // use when a ingredient picker cell is changed, to update any qty cells
@@ -30,6 +41,29 @@ class ManageStockViewController: UIViewController, UITableViewDelegate {
             }
         }
     }
+    
+    func disableUI() {
+        self.spinner = UIViewController.displaySpinner(onView: self.view)
+    }
+    
+    func enableUI() {
+        UIViewController.removeSpinner(spinner: self.spinner!)
+    }
+    
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+//================================================================================
+// MARK: - Extensions
+//================================================================================
+
+extension ManageStockViewController: UITableViewDelegate {
+    
+    // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)

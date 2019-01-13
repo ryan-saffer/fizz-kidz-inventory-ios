@@ -9,14 +9,13 @@
 import UIKit
 import FirebaseFirestore
 
-class ViewStockViewController: UIViewController, UITableViewDataSource {
+class ViewStockViewController: UIViewController {
 
     //================================================================================
-    // Properties
+    // MARK: - Properties
     //================================================================================
     
     // IBOutlets
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
 
@@ -28,7 +27,7 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
     var spinner: UIView? = nil
     
     //================================================================================
-    // Methods
+    // MARK: - Methods
     //================================================================================
     
     override func viewDidLoad() {
@@ -74,20 +73,6 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.locationData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! StockTableViewCell
-        cell.setData(data: self.locationData[indexPath.row])
-        return cell
-    }
-    
     func refresh() {
         self.tableView.refreshControl?.beginRefreshing()
         self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-(self.tableView.refreshControl?.frame.size.height)!), animated: true)
@@ -100,5 +85,24 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
     
     @objc func segmentChanged(segment: UISegmentedControl) {
         self.refresh()
+    }
+}
+
+//================================================================================
+// MARK: - Extensions
+//================================================================================
+
+extension ViewStockViewController: UITableViewDataSource {
+    
+    // MARK: UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.locationData.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! StockTableViewCell
+        cell.setData(data: self.locationData[indexPath.row])
+        return cell
     }
 }
