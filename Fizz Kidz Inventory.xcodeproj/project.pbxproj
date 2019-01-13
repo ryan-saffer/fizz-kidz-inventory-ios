@@ -91,8 +91,8 @@
 		CD4679FE21E6E16B00D4E579 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */,
 				CD8D560B21E9B2B700DE5F0F /* StockViewControllers */,
+				CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

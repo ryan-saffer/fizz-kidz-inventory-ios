@@ -601,8 +601,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-360-degrees-filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="s58-mJ-Khc">
+                                                    <rect key="frame" x="12" y="0.0" width="48" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="PI2-EG-zwc"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J30-d4-QS0">
-                                                    <rect key="frame" x="0.0" y="11.666666666666664" width="203.33333333333334" height="21"/>
+                                                    <rect key="frame" x="60.000000000000014" y="11.666666666666664" width="143.33333333333337" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -632,6 +638,7 @@
                                                 <constraint firstItem="RCa-Lt-h2Z" firstAttribute="leading" secondItem="J30-d4-QS0" secondAttribute="trailing" id="S6o-4n-3vm"/>
                                                 <constraint firstItem="jeT-lv-dlh" firstAttribute="leading" secondItem="YfE-Ah-i0u" secondAttribute="trailing" constant="8" id="ZuP-wv-SLZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="jeT-lv-dlh" secondAttribute="trailing" constant="30" id="n8W-ep-7yw"/>
+                                                <constraint firstItem="s58-mJ-Khc" firstAttribute="trailing" secondItem="J30-d4-QS0" secondAttribute="leading" id="wzN-Zl-UF9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
@@ -639,10 +646,13 @@
                                             <constraint firstItem="J30-d4-QS0" firstAttribute="centerY" secondItem="vX1-mp-Oqk" secondAttribute="centerY" id="2kO-Tz-13n"/>
                                             <constraint firstItem="YfE-Ah-i0u" firstAttribute="centerY" secondItem="vX1-mp-Oqk" secondAttribute="centerY" id="38t-gj-QhP"/>
                                             <constraint firstItem="RCa-Lt-h2Z" firstAttribute="centerY" secondItem="vX1-mp-Oqk" secondAttribute="centerY" id="Yah-Yu-fZk"/>
-                                            <constraint firstItem="J30-d4-QS0" firstAttribute="leading" secondItem="vX1-mp-Oqk" secondAttribute="leading" id="bJV-oZ-y9C"/>
                                             <constraint firstItem="RCa-Lt-h2Z" firstAttribute="centerX" secondItem="vX1-mp-Oqk" secondAttribute="centerX" id="faG-d8-ehZ"/>
+                                            <constraint firstItem="s58-mJ-Khc" firstAttribute="height" secondItem="vX1-mp-Oqk" secondAttribute="height" id="jFG-di-aio"/>
+                                            <constraint firstItem="s58-mJ-Khc" firstAttribute="leading" secondItem="vX1-mp-Oqk" secondAttribute="leading" constant="12" id="qeT-Zi-r0x"/>
+                                            <constraint firstItem="s58-mJ-Khc" firstAttribute="centerY" secondItem="vX1-mp-Oqk" secondAttribute="centerY" id="swo-Kn-Bhw"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="circleIcon" destination="s58-mJ-Khc" id="DIZ-sq-OIw"/>
                                             <outlet property="nameLabel" destination="J30-d4-QS0" id="3UR-Lu-pWJ"/>
                                             <outlet property="qtyLabel" destination="YfE-Ah-i0u" id="8RS-Lh-wFg"/>
                                             <outlet property="unitLabel" destination="jeT-lv-dlh" id="pd6-31-DUa"/>
@@ -677,10 +687,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnB-Y9-3dH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-783" y="733"/>
+            <point key="canvasLocation" x="-784.05797101449286" y="732.58928571428567"/>
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-360-degrees-filled-50" width="18" height="18"/>
         <image name="icons8-in-transit-50" width="54" height="54"/>
         <image name="icons8-move-stock-50" width="54" height="54"/>
         <image name="icons8-table-filled-24" width="54" height="54"/>

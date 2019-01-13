@@ -11,16 +11,35 @@ import Foundation
 struct Items {
     var itemIds: [String: String] =
         [
-            "Bicarb": "BICARB",
-            "Citric Acid": "CIT_ACID",
-            "Plates": "PLATES"
+            "Bicarb"        : "BICARB",
+            "Citric Acid"   : "CIT_ACID",
+            "Plates"        : "PLATES"
         ]
     
     var itemUnits: [String: String] =
         [
-            "BICARB": "KG",
-            "CIT_ACID": "KG",
-            "PLATES": "PCS"
+            "BICARB"    : "KG",
+            "CIT_ACID"  : "KG",
+            "PLATES"    : "PCS"
+        ]
+    
+    var qtyLevels: [String: [String: Float]] =
+        [
+            "BICARB":
+                [
+                    "HIGH"  : 50.0,
+                    "LOW"   : 20.0
+                ],
+            "CIT_ACID":
+                [
+                    "HIGH"  : 40.0,
+                    "LOW"   : 15.0
+                ],
+            "PLATES":
+                [
+                    "HIGH"  : 1000.0,
+                    "LOW"   : 300.0
+                ]
         ]
 }
 

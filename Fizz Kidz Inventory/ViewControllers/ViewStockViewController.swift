@@ -57,13 +57,14 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
                 self.locationData.removeAll()
                 let items = Items()
                 for ingredient in querySnapshot!.documents {
-                    let value = ingredient.data()["QTY"]!
+                    let qty = ingredient.data()["QTY"]!
                     let unit = ingredient.data()["UNIT"]!
                     let itemID = ingredient.documentID
                     let itemName = (items.itemIds as NSDictionary).allKeys(for: itemID) as! [String]
                     self.locationData.append([
+                                        itemID,
                                         itemName[0],
-                                        String(describing: value),
+                                        String(describing: qty),
                                         String(describing: unit)
                                         ])
                 }
@@ -83,9 +84,7 @@ class ViewStockViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! StockTableViewCell
-        cell.nameLabel.text = self.locationData[indexPath.row][0]
-        cell.qtyLabel.text = self.locationData[indexPath.row][1]
-        cell.unitLabel.text = self.locationData[indexPath.row][2]
+        cell.setData(data: self.locationData[indexPath.row])
         return cell
     }
     
