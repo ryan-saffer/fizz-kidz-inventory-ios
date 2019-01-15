@@ -24,7 +24,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vfB-SP-c96" secondAttribute="trailing" id="EJR-xX-Z24"/>
-                            <constraint firstItem="vfB-SP-c96" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Jdw-Ne-9XJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vfB-SP-c96" secondAttribute="bottom" id="R8D-2W-JH4"/>
                             <constraint firstItem="vfB-SP-c96" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Wr6-Dl-faL"/>
                             <constraint firstItem="vfB-SP-c96" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dBT-TA-RK7"/>

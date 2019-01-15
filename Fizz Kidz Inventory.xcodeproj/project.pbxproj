@@ -24,6 +24,7 @@
 		CD8D560521E8E0FB00DE5F0F /* LocationPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */; };
 		CD8D560821E9AEDB00DE5F0F /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */; };
 		CD8D560A21E9B2B100DE5F0F /* ManageStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560921E9B2B100DE5F0F /* ManageStockViewController.swift */; };
+		CD8D560D21EB821C00DE5F0F /* NoCursorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560C21EB821C00DE5F0F /* NoCursorTextField.swift */; };
 		CDD5244721E78BDD003CACF0 /* IngredientPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244621E78BDD003CACF0 /* IngredientPickerTableViewCell.swift */; };
 		CDD5244921E89F74003CACF0 /* LocationPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */; };
 		CDD5244C21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */; };
@@ -51,6 +52,7 @@
 		CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerDataSource.swift; sourceTree = "<group>"; };
 		CD8D560721E9AEDB00DE5F0F /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 		CD8D560921E9B2B100DE5F0F /* ManageStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageStockViewController.swift; sourceTree = "<group>"; };
+		CD8D560C21EB821C00DE5F0F /* NoCursorTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCursorTextField.swift; sourceTree = "<group>"; };
 		CDD5244621E78BDD003CACF0 /* IngredientPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CDD5244821E89F74003CACF0 /* LocationPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CDD5244B21E8B3E9003CACF0 /* IngredientPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerViewDataSource.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				CDD5244F21E8BE07003CACF0 /* Pickers */,
 				CD467A0221E7366A00D4E579 /* StockTableViewCell.swift */,
 				CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */,
+				CD8D560C21EB821C00DE5F0F /* NoCursorTextField.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				CD6154A521E45651008E9F38 /* Frameworks */,
 				CD6154A621E45651008E9F38 /* Resources */,
 				8B8C16C370B4A53EC28CEAF0 /* [CP] Embed Pods Frameworks */,
+				CD8D561021EDCB7200DE5F0F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -293,6 +297,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CD8D561021EDCB7200DE5F0F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Fizz\\ Kidz\\ Inventory/Info.plist",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		DB91D48A47C6406306731FD3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD8D560D21EB821C00DE5F0F /* NoCursorTextField.swift in Sources */,
 				CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */,
 				CDD5244721E78BDD003CACF0 /* IngredientPickerTableViewCell.swift in Sources */,
 				CD467A0321E7366A00D4E579 /* StockTableViewCell.swift in Sources */,

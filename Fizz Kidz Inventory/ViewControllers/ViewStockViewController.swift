@@ -106,3 +106,12 @@ extension ViewStockViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension ViewStockViewController: UITableViewDelegate {
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+}
