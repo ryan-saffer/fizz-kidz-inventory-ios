@@ -6,10 +6,13 @@
 //  Copyright © 2019 Fizz Kidz. All rights reserved.
 //
 
-// see https://stackoverflow.com/a/37517958/7870403
-
 import UIKit
 
+/**
+ Table cell used for selecting something using a picker view
+ 
+ See https://stackoverflow.com/a/37517958/7870403
+ */
 class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     //================================================================================
@@ -17,11 +20,13 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
     //================================================================================
     
     // IBOutlets
-    @IBOutlet weak var textField: UITextField!
+    /// 'hidden' text field used to react to label being selected
+    @IBOutlet weak var textField: NoCursorTextField!
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
     
-    weak var owner: ManageStockViewController! = nil
+    // variables
+    weak var owner: ManageStockViewController!
     var picker: UIPickerView! = UIPickerView()
     var pickerDataSource: PickerViewDataSource!
     var selectedItem: String? = nil
@@ -32,11 +37,20 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        self.textField.delegate = self
         
         self.picker = UIPickerView(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
         self.picker.delegate = self
+        
+        self.assignPickerDataSource()
+    }
+    
+    /**
+     Create and assign the picker view data source
+ 
+     Must be overriden by child classes
+    */
+    func assignPickerDataSource() {
+        fatalError("Must Override")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,6 +59,7 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
+    /// Called when 'Done' button from picker view selected
     @objc func pickerItemSelected(_ sender: UIButton) {
         let selectedItem = self.pickerDataSource.data[self.picker.selectedRow(inComponent: 0)]
         self.itemLabel.text = selectedItem

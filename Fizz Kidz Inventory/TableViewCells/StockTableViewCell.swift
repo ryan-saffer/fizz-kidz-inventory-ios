@@ -8,8 +8,9 @@
 
 import UIKit
 
+/// Table cell used for selecting quantity to receive/move
 class StockTableViewCell: UITableViewCell {
-
+    
     //================================================================================
     // MARK: - Properties
     //================================================================================
@@ -17,28 +18,32 @@ class StockTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var qtyLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
-    
     @IBOutlet weak var circleIcon: UIImageView!
     
     //================================================================================
     // Mark: - Methods
     //================================================================================
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func setData(data: [String]) {
+    /**
+     Sets the labels text and circle icon colour
+     
+     Must be called after dequeue of cell
+     
+     - Parameters:
+        - itemID: the ID of the stock item in Firestore
+        - itemName: the name of the stock item
+        - qty: the amount of stock available for the item
+        - unit: the unit the item is measured in
+    */
+    func setData(itemID: String, itemName: String, qty: String, unit: String) {
         
-        self.nameLabel.text = data[1]
-        self.qtyLabel.text = data[2]
-        self.unitLabel.text = data[3]
+        self.nameLabel.text = itemName
+        self.qtyLabel.text = qty
+        self.unitLabel.text = unit
         
-        let items = Items()
-        let qty = Float(data[2])!
-        let high = items.qtyLevels[data[0]]!["HIGH"]!
-        let low = items.qtyLevels[data[0]]!["LOW"]!
+        let qty = Float(qty)!
+        let high = Items.qtyLevels[itemID]!["HIGH"]!
+        let low = Items.qtyLevels[itemID]!["LOW"]!
         
         if (qty >= high) {
             self.circleIcon.tintColor = UIColor.green
@@ -48,11 +53,4 @@ class StockTableViewCell: UITableViewCell {
             self.circleIcon.tintColor = UIColor.red
         }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

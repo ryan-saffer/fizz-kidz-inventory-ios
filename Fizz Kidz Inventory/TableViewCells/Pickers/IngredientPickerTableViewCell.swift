@@ -8,20 +8,18 @@
 
 import UIKit
 
+/// Table cell used for selecting a stock item
 class IngredientPickerTableViewCell: PickerTableViewCell {
     
     //================================================================================
     // MARK: - Methods
     //================================================================================
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func assignPickerDataSource() {
         self.pickerDataSource = IngredientPickerViewDataSource()
         self.picker.dataSource = self.pickerDataSource
     }
     
-    // called when picker 'Done' button selected
     override func pickerItemSelected(_ sender: UIButton) {
         super.pickerItemSelected(sender)
         

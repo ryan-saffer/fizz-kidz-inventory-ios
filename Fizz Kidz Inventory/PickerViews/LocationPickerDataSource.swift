@@ -15,9 +15,10 @@ class LocationPickerDataSource: PickerViewDataSource {
     //================================================================================
     override init() {
         super.init()
-        let locations = Locations()
+        
+        // populate data
         self.data = []
-        for location in locations.names {
+        for location in Locations.names {
             self.data.append(location)
         }
     }

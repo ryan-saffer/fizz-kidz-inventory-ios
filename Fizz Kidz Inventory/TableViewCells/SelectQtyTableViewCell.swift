@@ -11,23 +11,12 @@ import UIKit
 class SelectQtyTableViewCell: UITableViewCell {
 
     //================================================================================
-    // MARK: - Methods
+    // MARK: - Parameters
     //================================================================================
     
+    /// The text field for accepting qty input
     @IBOutlet weak var qtyTextField: UITextField! {
         didSet { qtyTextField?.addDoneToolbar() }
     }
     @IBOutlet weak var unitLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

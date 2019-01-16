@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 
+/// Controls the view for moving stock
 class MoveStockViewController: ManageStockViewController {
     
     //================================================================================
@@ -21,25 +22,21 @@ class MoveStockViewController: ManageStockViewController {
     //================================================================================
     // MARK: - Methods
     //================================================================================
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
+    /// Validates the fields before updating the quantities in Firestore
     @IBAction func moveButtonPressed(_ sender: Any) {
-        
-        let items = Items()
         
         let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerTableViewCell
         let fromCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! LocationPickerTableViewCell
         let toCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! LocationPickerTableViewCell
         let qtyCell = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! SelectQtyTableViewCell
         
+        // VALIDATE FIELDS
         guard let itemName = itemCell.selectedItem else {
             self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
             return
         }
-        let itemID = String(describing: items.itemIds[itemName]!)
+        let itemID = String(describing: Items.itemIds[itemName]!)
         
         guard let from = fromCell.selectedItem else {
             self.displayAlert(title: "Select 'From' location", message: "Tap 'Select' to select the location the item is being moved from")
@@ -62,14 +59,26 @@ class MoveStockViewController: ManageStockViewController {
             return
         }
         
+        // DISPLAY CONFIRMATION DIALOGUE
         let confirmationAlert = UIAlertController(title: "Confirm move", message: "This will move \(qty) \(unit)s of \(itemName) from \(from) to \(to)", preferredStyle: UIAlertController.Style.alert)
-        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action: UIAlertAction!) in
+        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (action: UIAlertAction!) in
             self.performMove(itemName: itemName, itemID: itemID, from: from, to: to, qty: qty, unit: unit)
         }))
         confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(confirmationAlert, animated: true, completion: nil)
     }
     
+    /**
+     Removes qty from location A and adds it to location B
+     
+     - Parameters:
+        - itemName: the name of the stock item being moved
+        - itemID: the ID of the stock item in Firestore
+        - from: the location the item is being moved from
+        - to: the location the item is being moved to
+        - qty: the amount being moved
+        - unit: the unit the item is measured in
+     */
     func performMove(itemName: String, itemID: String, from: String, to: String, qty: Float, unit: String) {
         
         let firestore: Firestore = Firestore.firestore()

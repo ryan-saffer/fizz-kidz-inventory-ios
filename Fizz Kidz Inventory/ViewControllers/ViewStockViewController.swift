@@ -20,11 +20,8 @@ class ViewStockViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     // variables
-    var firestore: Firestore! = nil
+    var firestore: Firestore!
     var locationData: [[String]] = [[String]]()
-    
-    // spinner
-    var spinner: UIView? = nil
     
     //================================================================================
     // MARK: - Methods
@@ -33,18 +30,20 @@ class ViewStockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // add pull-to-refresh to tableview
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
         
+        // set segmentControl target when changed
         self.segmentedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
         
         self.refresh()
     }
     
+    /// Pulls the latest data from Firestore
     func reloadData() {
         
-        // get data from firestore
         firestore = Firestore.firestore()
         
         let location: String = self.segmentedControl.titleForSegment(at: self.segmentedControl.selectedSegmentIndex)!.uppercased()
@@ -54,12 +53,11 @@ class ViewStockViewController: UIViewController {
                 print("ERROR: \(err)")
             } else {
                 self.locationData.removeAll()
-                let items = Items()
                 for ingredient in querySnapshot!.documents {
                     let qty = ingredient.data()["QTY"]!
                     let unit = ingredient.data()["UNIT"]!
                     let itemID = ingredient.documentID
-                    let itemName = (items.itemIds as NSDictionary).allKeys(for: itemID) as! [String]
+                    let itemName = (Items.itemIds as NSDictionary).allKeys(for: itemID) as! [String]
                     self.locationData.append([
                                         itemID,
                                         itemName[0],
@@ -73,16 +71,19 @@ class ViewStockViewController: UIViewController {
         }
     }
     
+    /// Displays pull-to-refresh icon before reloading from Firestore
     func refresh() {
         self.tableView.refreshControl?.beginRefreshing()
         self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-(self.tableView.refreshControl?.frame.size.height)!), animated: true)
         self.reloadData()
     }
     
+    /// Called when pull-to-refresh gesture made
     @objc func refresh(_ refreshControl: UIRefreshControl) {
         self.reloadData()
     }
     
+    /// Called when segment (location) changed
     @objc func segmentChanged(segment: UISegmentedControl) {
         self.refresh()
     }
@@ -102,7 +103,10 @@ extension ViewStockViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! StockTableViewCell
-        cell.setData(data: self.locationData[indexPath.row])
+        cell.setData(itemID:    self.locationData[indexPath.row][0],
+                     itemName:  self.locationData[indexPath.row][1],
+                     qty:       self.locationData[indexPath.row][2],
+                     unit:      self.locationData[indexPath.row][3])
         return cell
     }
 }

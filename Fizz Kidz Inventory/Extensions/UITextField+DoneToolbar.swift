@@ -6,11 +6,15 @@
 //  Copyright © 2019 Fizz Kidz. All rights reserved.
 //
 
-// https://stackoverflow.com/a/45771126/7870403
-
 import UIKit
 
+/**
+ Adds 'Done' button to top right of text field input. Useful for decimal inputs.
+ 
+ See https://stackoverflow.com/a/45771126/7870403
+ */
 extension UITextField {
+    
     func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
         let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
         

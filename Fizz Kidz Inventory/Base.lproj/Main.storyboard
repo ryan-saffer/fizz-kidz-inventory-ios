@@ -66,6 +66,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="itemSelected:" destination="Ofu-N3-EmH" eventType="editingDidBegin" id="JK5-d8-f4a"/>
+                                                        <outlet property="delegate" destination="wgN-XG-s1a" id="SlM-tG-GXz"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sQ-6l-UHS">
@@ -129,6 +130,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="itemSelected:" destination="PrU-ok-3TK" eventType="editingDidBegin" id="2qt-sr-QZx"/>
+                                                        <outlet property="delegate" destination="b75-ew-z4M" id="d9e-i6-I8x"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTi-UY-4C5">
@@ -186,13 +188,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-qo-m8P">
-                                                    <rect key="frame" x="281" y="11.5" width="101" height="21"/>
+                                                    <rect key="frame" x="261.5" y="11.5" width="81.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1lj-1t-ZZa">
-                                                    <rect key="frame" x="148" y="7" width="101" height="30"/>
+                                                    <rect key="frame" x="148" y="7" width="81.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -335,6 +337,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="itemSelected:" destination="YIr-iN-dFr" eventType="editingDidBegin" id="G7z-xD-3u3"/>
+                                                        <outlet property="delegate" destination="oOc-IL-lUE" id="hga-ME-Vo6"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lja-FZ-x3H">
@@ -376,7 +379,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="1000" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIW-9w-gGb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="1000" text="From/To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIW-9w-gGb">
                                                     <rect key="frame" x="32" y="12" width="67.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="67.333333333333314" id="GTy-pW-ZmJ"/>
@@ -398,6 +401,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="itemSelected:" destination="vbX-6g-tby" eventType="editingDidBegin" id="NEk-oI-LfL"/>
+                                                        <outlet property="delegate" destination="oOc-IL-lUE" id="sxQ-oi-EH1"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf7-a9-cBe">
@@ -456,13 +460,13 @@
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-hn-dwd">
-                                                    <rect key="frame" x="148" y="7" width="101" height="30"/>
+                                                    <rect key="frame" x="148" y="7" width="81.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP5-G6-cCA">
-                                                    <rect key="frame" x="281" y="11.5" width="101" height="21"/>
+                                                    <rect key="frame" x="261.5" y="11.5" width="81.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

@@ -8,15 +8,14 @@
 
 import UIKit
 
+/// Table cell used for selecting a store location
 class LocationPickerTableViewCell: PickerTableViewCell {
 
     //================================================================================
     // MARK: - Methods
     //================================================================================
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    override func assignPickerDataSource() {
         self.pickerDataSource = LocationPickerDataSource()
         self.picker.dataSource = self.pickerDataSource
     }

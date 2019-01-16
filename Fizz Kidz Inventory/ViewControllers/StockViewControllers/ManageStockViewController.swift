@@ -25,12 +25,6 @@ class ManageStockViewController: UIViewController {
     // MARK: - Methods
     //================================================================================
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.tableView.delegate = self
-    }
-    
     /**
     
      Used when an ingredient picker cell item is changed, to update any qty cells 'unit' label
@@ -41,9 +35,8 @@ class ManageStockViewController: UIViewController {
     func itemChanged(item: String) {
         for i in 0...tableView.numberOfRows(inSection: 0) {
             if let cell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? SelectQtyTableViewCell {
-                let items = Items()
-                let itemID = items.itemIds[item]!
-                let itemUnit = items.itemUnits[itemID]!
+                let itemID = Items.itemIds[item]!
+                let itemUnit = Items.itemUnits[itemID]!
                 cell.unitLabel.text = itemUnit
             }
         }
@@ -54,7 +47,11 @@ class ManageStockViewController: UIViewController {
         self.spinner = UIViewController.displaySpinner(onView: self.view)
     }
     
-    /// Re-enables the UI - cannot be called unless `disableUI()` has been called previously
+    /**
+        Re-enables the UI
+ 
+        Cannot be called unless `disableUI()` has been called previously
+    */
     func enableUI() {
         UIViewController.removeSpinner(spinner: self.spinner!)
     }

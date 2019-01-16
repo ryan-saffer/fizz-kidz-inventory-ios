@@ -9,29 +9,26 @@
 import UIKit
 import FirebaseFirestore
 
+/// Controls the view for receiving stock
 class ReceiveStockViewController: ManageStockViewController {
     
     //================================================================================
     // MARK: - Methods
     //================================================================================
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    /// Validates the fields before updating Firestore
     @IBAction func receiveStockButtonPressed(_ sender: Any) {
-        
-        let items = Items()
         
         let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerTableViewCell
         let locationCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! LocationPickerTableViewCell
         let qtyCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! SelectQtyTableViewCell
         
+        // VALIDATE FIELDS
         guard let itemName = itemCell.selectedItem else {
             self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
             return
         }
-        let itemID = String(describing: items.itemIds[itemName]!)
+        let itemID = String(describing: Items.itemIds[itemName]!)
         
         guard let location = locationCell.selectedItem else {
             self.displayAlert(title: "Select Location", message: "Tap 'Select' to select the location the stock is being received")
@@ -45,20 +42,31 @@ class ReceiveStockViewController: ManageStockViewController {
             return
         }
         
+        // DISPLAY CONFIRMATION DIALOGUE
         let confirmationAlert = UIAlertController(title: "Confirm receival", message: "\(qty) \(unit)s of \(itemName) will be received in \(location)", preferredStyle: UIAlertController.Style.alert)
-        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action: UIAlertAction!) in
+        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (action: UIAlertAction!) in
             self.reveiveStock(itemName: itemName, itemID: itemID, location: location, qty: qty, unit: unit)
         }))
         confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(confirmationAlert, animated: true, completion: nil)
     }
     
+    /**
+     Updates Firestore with the amount of stock received
+     
+     - Parameters:
+        - itemName: the name of the stock item being receieved
+        - itemID: the ID of the item in Firestore
+        - location: the location the item is being received into
+        - qty: the amount being received
+        - unit: the unit the item is measured in
+     */
     func reveiveStock(itemName: String, itemID: String, location: String, qty: Float, unit: String) {
         
         self.disableUI()
         
         let firestore: Firestore = Firestore.firestore()
-        let docRef = firestore.document("\(location.uppercased())/\(itemID)")
+        let docRef: DocumentReference = firestore.document("\(location.uppercased())/\(itemID)")
         
         firestore.runTransaction({ (transaction, errorPointer) -> Any? in
             let document: DocumentSnapshot

@@ -9,21 +9,21 @@
 import Foundation
 
 struct Items {
-    var itemIds: [String: String] =
+    static var itemIds: [String: String] =
         [
             "Bicarb"        : "BICARB",
             "Citric Acid"   : "CIT_ACID",
             "Plates"        : "PLATES"
         ]
     
-    var itemUnits: [String: String] =
+    static var itemUnits: [String: String] =
         [
             "BICARB"    : "KG",
             "CIT_ACID"  : "KG",
             "PLATES"    : "PCS"
         ]
     
-    var qtyLevels: [String: [String: Float]] =
+    static var qtyLevels: [String: [String: Float]] =
         [
             "BICARB":
                 [
@@ -44,7 +44,7 @@ struct Items {
 }
 
 struct Locations {
-    var names: [String] =
+    static var names: [String] =
         [
             "Warehouse",
             "Malvern",
