@@ -35,8 +35,8 @@ class ManageStockViewController: UIViewController {
     func itemChanged(item: String) {
         for i in 0...tableView.numberOfRows(inSection: 0) {
             if let cell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? SelectQtyTableViewCell {
-                let itemID = Items.itemIds[item]!
-                let itemUnit = Items.itemUnits[itemID]!
+                let itemID = (Items.item_names as NSDictionary).allKeys(for: item)[0] as! String
+                let itemUnit = Items.item_units[itemID]!
                 cell.unitLabel.text = itemUnit
             }
         }

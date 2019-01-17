@@ -18,6 +18,7 @@ class LocationPickerDataSource: PickerViewDataSource {
         
         // populate data
         self.data = []
+
         for location in Locations.names {
             self.data.append(location)
         }

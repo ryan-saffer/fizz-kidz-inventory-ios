@@ -19,6 +19,7 @@
 		CD6154B321E45652008E9F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B221E45652008E9F38 /* Assets.xcassets */; };
 		CD6154B621E45652008E9F38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B421E45652008E9F38 /* LaunchScreen.storyboard */; };
 		CD6154BE21E45783008E9F38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */; };
+		CD80072A21EF4669005B573D /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80072921EF4669005B573D /* SplashScreenViewController.swift */; };
 		CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */; };
 		CD8D560321E8DE7D00DE5F0F /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */; };
 		CD8D560521E8E0FB00DE5F0F /* LocationPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */; };
@@ -47,6 +48,7 @@
 		CD6154B521E45652008E9F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD6154B721E45652008E9F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CD80072921EF4669005B573D /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQtyTableViewCell.swift; sourceTree = "<group>"; };
 		CD8D560221E8DE7D00DE5F0F /* PickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		CD8D560421E8E0FB00DE5F0F /* LocationPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerDataSource.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				CD8D560B21E9B2B700DE5F0F /* StockViewControllers */,
 				CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */,
+				CD80072921EF4669005B573D /* SplashScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				CD8D560D21EB821C00DE5F0F /* NoCursorTextField.swift in Sources */,
 				CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */,
+				CD80072A21EF4669005B573D /* SplashScreenViewController.swift in Sources */,
 				CDD5244721E78BDD003CACF0 /* IngredientPickerTableViewCell.swift in Sources */,
 				CD467A0321E7366A00D4E579 /* StockTableViewCell.swift in Sources */,
 				CDD5245521E8C8DC003CACF0 /* PickerTableViewCell.swift in Sources */,

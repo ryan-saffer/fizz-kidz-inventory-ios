@@ -19,8 +19,15 @@ class IngredientPickerViewDataSource: PickerViewDataSource {
         
         // populate data
         self.data = []
-        for item in Items.itemIds {
-            self.data.append(item.key)
+        
+        // if no internet, Items.item_names will be empty
+        if (Items.item_names.isEmpty) {
+            self.data.append("NO INTERNET CONNECTION")
+            return
+        }
+        
+        for item in Items.item_names {
+            self.data.append(item.value)
         }
         self.data.sort()
     }

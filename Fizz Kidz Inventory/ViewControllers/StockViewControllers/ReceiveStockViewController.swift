@@ -28,7 +28,7 @@ class ReceiveStockViewController: ManageStockViewController {
             self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
             return
         }
-        let itemID = String(describing: Items.itemIds[itemName]!)
+        let itemID = (Items.item_names as NSDictionary).allKeys(for: itemName)[0] as! String
         
         guard let location = locationCell.selectedItem else {
             self.displayAlert(title: "Select Location", message: "Tap 'Select' to select the location the stock is being received")

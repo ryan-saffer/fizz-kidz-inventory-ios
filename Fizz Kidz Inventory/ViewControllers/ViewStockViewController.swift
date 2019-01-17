@@ -21,7 +21,7 @@ class ViewStockViewController: UIViewController {
 
     // variables
     var firestore: Firestore!
-    var locationData: [[String]] = [[String]]()
+    var locationData: [[String: Any]] = [[String: Any]]()
     
     //================================================================================
     // MARK: - Methods
@@ -37,6 +37,9 @@ class ViewStockViewController: UIViewController {
         
         // set segmentControl target when changed
         self.segmentedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+        
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
         self.refresh()
     }
@@ -54,16 +57,14 @@ class ViewStockViewController: UIViewController {
             } else {
                 self.locationData.removeAll()
                 for ingredient in querySnapshot!.documents {
-                    let qty = ingredient.data()["QTY"]!
-                    let unit = ingredient.data()["UNIT"]!
-                    let itemID = ingredient.documentID
-                    let itemName = (Items.itemIds as NSDictionary).allKeys(for: itemID) as! [String]
-                    self.locationData.append([
-                                        itemID,
-                                        itemName[0],
-                                        String(describing: qty),
-                                        String(describing: unit)
-                                        ])
+                    var data: [String: Any] = [:]
+                    data["ITEM_ID"] = ingredient.documentID
+                    data["QTY"] = ingredient.data()["QTY"]
+                    data["UNIT"] = ingredient.data()["UNIT"]
+                    data["DISP_NAME"] = ingredient.data()["DISP_NAME"]
+                    data["HIGH"] = ingredient.data()["HIGH"]
+                    data["LOW"] = ingredient.data()["LOW"]
+                    self.locationData.append(data)
                 }
                 self.tableView.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
@@ -103,10 +104,7 @@ extension ViewStockViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! StockTableViewCell
-        cell.setData(itemID:    self.locationData[indexPath.row][0],
-                     itemName:  self.locationData[indexPath.row][1],
-                     qty:       self.locationData[indexPath.row][2],
-                     unit:      self.locationData[indexPath.row][3])
+        cell.setData(self.locationData[indexPath.row])
         return cell
     }
 }

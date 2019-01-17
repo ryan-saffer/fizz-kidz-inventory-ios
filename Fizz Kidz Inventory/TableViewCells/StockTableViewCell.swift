@@ -29,21 +29,17 @@ class StockTableViewCell: UITableViewCell {
      
      Must be called after dequeue of cell
      
-     - Parameters:
-        - itemID: the ID of the stock item in Firestore
-        - itemName: the name of the stock item
-        - qty: the amount of stock available for the item
-        - unit: the unit the item is measured in
+     - Parameter data - a dict with the values from firestore
     */
-    func setData(itemID: String, itemName: String, qty: String, unit: String) {
+    func setData(_ data: [String: Any]) {
         
-        self.nameLabel.text = itemName
-        self.qtyLabel.text = qty
-        self.unitLabel.text = unit
+        self.nameLabel.text = data["DISP_NAME"] as? String
+        self.qtyLabel.text = String(describing: data["QTY"]!)
+        self.unitLabel.text = data["UNIT"] as? String
         
-        let qty = Float(qty)!
-        let high = Items.qtyLevels[itemID]!["HIGH"]!
-        let low = Items.qtyLevels[itemID]!["LOW"]!
+        let qty = data["QTY"] as! Float
+        let high = data["HIGH"] as! Float
+        let low = data["LOW"] as! Float
         
         if (qty >= high) {
             self.circleIcon.tintColor = UIColor.green
