@@ -21,7 +21,10 @@ class ViewStockViewController: UIViewController {
 
     // variables
     var firestore: Firestore!
-    var locationData: [[String: Any]] = [[String: Any]]()
+    var ingredientData: [[String: Any]] = [[String: Any]]()
+    var foodData: [[String: Any]] = [[String: Any]]()
+    var generalData: [[String: Any]] = [[String: Any]]()
+    var packagingData: [[String: Any]] = [[String: Any]]()
     
     //================================================================================
     // MARK: - Methods
@@ -55,8 +58,14 @@ class ViewStockViewController: UIViewController {
             if let err = err {
                 print("ERROR: \(err)")
             } else {
-                self.locationData.removeAll()
+                
+                self.ingredientData.removeAll()
+                self.foodData.removeAll()
+                self.generalData.removeAll()
+                self.packagingData.removeAll()
+                
                 for ingredient in querySnapshot!.documents {
+                    
                     var data: [String: Any] = [:]
                     data["ITEM_ID"] = ingredient.documentID
                     data["QTY"] = ingredient.data()["QTY"]
@@ -64,7 +73,18 @@ class ViewStockViewController: UIViewController {
                     data["DISP_NAME"] = ingredient.data()["DISP_NAME"]
                     data["HIGH"] = ingredient.data()["HIGH"]
                     data["LOW"] = ingredient.data()["LOW"]
-                    self.locationData.append(data)
+                    
+                    let category = ingredient.data()["CATEGORY"] as! String
+                    switch category {
+                    case "FOOD":
+                        self.foodData.append(data)
+                    case "INGREDIENT":
+                        self.ingredientData.append(data)
+                    case "GENERAL":
+                        self.generalData.append(data)
+                    default: // "PACKAGING"
+                        self.packagingData.append(data)
+                    }
                 }
                 self.tableView.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
@@ -75,13 +95,21 @@ class ViewStockViewController: UIViewController {
     /// Displays pull-to-refresh icon before reloading from Firestore
     func refresh() {
         self.tableView.refreshControl?.beginRefreshing()
-        self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-(self.tableView.refreshControl?.frame.size.height)!), animated: true)
+        self.tableView.setContentOffset(
+            CGPoint(
+                x: 0,
+                y: self.tableView.contentOffset.y-(self.tableView.refreshControl?.frame.size.height)!
+            ),
+            animated: true
+        )
+        self.tableView.reloadData() // do this to fix strange refresh control behaviour
         self.reloadData()
     }
     
     /// Called when pull-to-refresh gesture made
     @objc func refresh(_ refreshControl: UIRefreshControl) {
-        self.reloadData()
+        //self.reloadData()
+        self.refresh()
     }
     
     /// Called when segment (location) changed
@@ -98,13 +126,54 @@ extension ViewStockViewController: UITableViewDataSource {
     
     // MARK: UITableViewDataSource
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Food"
+        case 1:
+            return "General"
+        case 2:
+            return "Packaging"
+        default:
+            return "Ingredients"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48.0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.locationData.count
+        switch section {
+        case 0:
+            return self.foodData.count
+        case 1:
+            return self.generalData.count
+        case 2:
+            return self.packagingData.count
+        default:
+            return self.ingredientData.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! StockTableViewCell
-        cell.setData(self.locationData[indexPath.row])
+        var data: [String: Any]!
+        switch indexPath.section {
+        case 0:
+            data = self.foodData[indexPath.row]
+        case 1:
+            data = self.generalData[indexPath.row]
+        case 2:
+            data = self.packagingData[indexPath.row]
+        default:
+            data = self.ingredientData[indexPath.row]
+        }
+        cell.setData(data)
         return cell
     }
 }

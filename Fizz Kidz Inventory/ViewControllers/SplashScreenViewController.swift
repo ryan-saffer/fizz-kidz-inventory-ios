@@ -13,7 +13,6 @@ import FirebaseFirestore
 class SplashScreenViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -32,7 +31,7 @@ class SplashScreenViewController: UIViewController {
         
         firestore.collection(location).getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("ERROR: \(error)")
+                print("SPLASH SCREEN FETCH ERROR: \(error)")
             } else {
                 for item in querySnapshot!.documents {
                     Items.item_names[item.documentID] = item.data()["DISP_NAME"] as? String

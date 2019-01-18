@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-FizzKic" translatesAutoresizingMaskIntoConstraints="NO" id="vfB-SP-c96">
-                                <rect key="frame" x="0.0" y="76.5" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="159" width="375" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="9fp-QD-M9o"/>
                                 </constraints>
@@ -27,7 +27,7 @@
                         <color key="backgroundColor" red="0.93742865320000002" green="0.93701523539999998" blue="0.95685821770000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vfB-SP-c96" secondAttribute="trailing" id="EJR-xX-Z24"/>
-                            <constraint firstItem="vfB-SP-c96" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.66" id="IJb-pm-AO5"/>
+                            <constraint firstItem="vfB-SP-c96" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="IJb-pm-AO5"/>
                             <constraint firstItem="vfB-SP-c96" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tHH-UR-ngo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
