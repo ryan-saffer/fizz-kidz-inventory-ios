@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="qtySelectionCell" id="pNe-Pu-aAf" customClass="SelectQtyTableViewCell" customModule="Fizz_Kidz_Inventory" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pNe-Pu-aAf" id="1fk-j7-GdE">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMp-GZ-dLm">
+                        <rect key="frame" x="32" y="0.0" width="67.5" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="67.329999999999998" id="szS-pk-Ibm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8Q-Hm-bOC">
+                        <rect key="frame" x="115.5" y="0.0" width="0.5" height="44"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="0.5" id="quD-gn-fPH"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqX-nc-0Mx">
+                        <rect key="frame" x="261.5" y="11.5" width="81.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnX-7s-g1s">
+                        <rect key="frame" x="148" y="7" width="81.5" height="30"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KqX-nc-0Mx" firstAttribute="leading" secondItem="gnX-7s-g1s" secondAttribute="trailing" constant="32" id="IU6-K0-KiD"/>
+                    <constraint firstItem="gnX-7s-g1s" firstAttribute="leading" secondItem="c8Q-Hm-bOC" secondAttribute="trailing" constant="32" id="WYf-dk-P2o"/>
+                    <constraint firstItem="gnX-7s-g1s" firstAttribute="width" secondItem="KqX-nc-0Mx" secondAttribute="width" id="j9O-XY-dhx"/>
+                    <constraint firstItem="c8Q-Hm-bOC" firstAttribute="leading" secondItem="CMp-GZ-dLm" secondAttribute="trailing" constant="16" id="mW3-cd-hwg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="CMp-GZ-dLm" firstAttribute="height" secondItem="pNe-Pu-aAf" secondAttribute="height" id="2V3-Zq-RlS"/>
+                <constraint firstAttribute="trailing" secondItem="KqX-nc-0Mx" secondAttribute="trailing" constant="32" id="DHk-SW-9u5"/>
+                <constraint firstItem="gnX-7s-g1s" firstAttribute="centerY" secondItem="pNe-Pu-aAf" secondAttribute="centerY" id="H5t-8R-d7e"/>
+                <constraint firstItem="c8Q-Hm-bOC" firstAttribute="height" secondItem="pNe-Pu-aAf" secondAttribute="height" id="Pb9-kw-dc8"/>
+                <constraint firstItem="CMp-GZ-dLm" firstAttribute="centerY" secondItem="pNe-Pu-aAf" secondAttribute="centerY" id="Ri2-X3-iW1"/>
+                <constraint firstItem="c8Q-Hm-bOC" firstAttribute="centerY" secondItem="pNe-Pu-aAf" secondAttribute="centerY" id="X4p-o7-R00"/>
+                <constraint firstItem="KqX-nc-0Mx" firstAttribute="centerY" secondItem="pNe-Pu-aAf" secondAttribute="centerY" id="bkr-RR-RD4"/>
+                <constraint firstItem="CMp-GZ-dLm" firstAttribute="leading" secondItem="pNe-Pu-aAf" secondAttribute="leading" constant="32" id="dSx-V2-o9d"/>
+            </constraints>
+            <connections>
+                <outlet property="qtyTextField" destination="gnX-7s-g1s" id="DUy-g3-PTy"/>
+                <outlet property="unitLabel" destination="KqX-nc-0Mx" id="6Cd-3L-xkT"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

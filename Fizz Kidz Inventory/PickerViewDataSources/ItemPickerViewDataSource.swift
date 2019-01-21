@@ -1,5 +1,5 @@
 //
-//  IngredientPickerViewDataSource+Delegate.swift
+//  ItemPickerViewDataSource+Delegate.swift
 //  Fizz Kidz Inventory
 //
 //  Created by Ryan Saffer on 11/1/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IngredientPickerViewDataSource: PickerViewDataSource {
+class ItemPickerViewDataSource: PickerViewDataSource {
     
     //================================================================================
     // MARK: - Methods

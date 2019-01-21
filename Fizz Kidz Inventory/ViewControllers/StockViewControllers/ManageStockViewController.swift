@@ -25,6 +25,19 @@ class ManageStockViewController: UIViewController {
     // MARK: - Methods
     //================================================================================
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.registerTableViewCells()
+    }
+    
+    /// Gets cells from xib files and registers as reusable cells for the table view
+    func registerTableViewCells() {
+        self.tableView.register(ItemPickerTableViewCell.self, forCellReuseIdentifier: "itemPickerCell")
+        self.tableView.register(LocationPickerTableViewCell.self, forCellReuseIdentifier: "locationPickerCell")
+        self.tableView.register(UINib(nibName: "QtySelectionTableViewCell", bundle: nil), forCellReuseIdentifier: "qtySelectionCell")
+    }
+    
     /**
     
      Used when an ingredient picker cell item is changed, to update any qty cells 'unit' label

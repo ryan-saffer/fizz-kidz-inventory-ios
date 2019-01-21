@@ -12,11 +12,18 @@ import UIKit
 class LocationPickerTableViewCell: PickerTableViewCell {
 
     //================================================================================
+    // MARK: - Parameters
+    //================================================================================
+    
+    override var reuseIdentifier: String? {
+        return "locationPickerCell"
+    }
+    
+    //================================================================================
     // MARK: - Methods
     //================================================================================
     
     override func assignPickerDataSource() {
         self.pickerDataSource = LocationPickerDataSource()
-        self.picker.dataSource = self.pickerDataSource
     }
 }

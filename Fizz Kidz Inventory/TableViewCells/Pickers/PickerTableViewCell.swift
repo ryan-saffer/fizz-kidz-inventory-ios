@@ -19,29 +19,55 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
     // MARK: - Properties
     //================================================================================
     
-    // IBOutlets
+    // IBOutlets - set programatically inside init
     /// 'hidden' text field used to react to label being selected
-    @IBOutlet weak var textField: NoCursorTextField!
-    @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var headerLabel: UILabel!
+    weak var textField: NoCursorTextField!
+    weak var itemLabel: UILabel!
+    weak var headerLabel: UILabel!
     
     // variables
     weak var owner: ManageStockViewController!
-    var picker: UIPickerView! = UIPickerView()
-    var pickerDataSource: PickerViewDataSource!
+    var picker: UIPickerView!
+    var pickerDataSource: PickerViewDataSource! {
+        didSet {
+            self.picker.dataSource = self.pickerDataSource
+        }
+    }
     var selectedItem: String? = nil
     
     //================================================================================
     // MARK: - Methods
     //================================================================================
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        // load the xib to associate with
+        let nib = Bundle.main.loadNibNamed("PickerTableViewCell", owner: nil, options: nil)
+        if let view = nib?.first as? UIView{
+            self.addSubview(view)
+        }
+        
+        // link each view to parameter (since xib assigned programatically, no IBOutlets exist)
+        if let headerLabel = self.viewWithTag(1) as? UILabel {
+            self.headerLabel = headerLabel
+        }
+        if let textField = self.viewWithTag(2) as? NoCursorTextField {
+            self.textField = textField
+            self.textField.addTarget(self, action: #selector(self.itemSelected(_:)), for: .editingDidBegin)
+        }
+        if let itemLabel = self.viewWithTag(3) as? UILabel {
+            self.itemLabel = itemLabel
+        }
         
         self.picker = UIPickerView(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
         self.picker.delegate = self
         
         self.assignPickerDataSource()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     /**
@@ -53,12 +79,6 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
         fatalError("Must Override")
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     /// Called when 'Done' button from picker view selected
     @objc func pickerItemSelected(_ sender: UIButton) {
         let selectedItem = self.pickerDataSource.data[self.picker.selectedRow(inComponent: 0)]
@@ -68,7 +88,7 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.textField.resignFirstResponder()
     }
     
-    @IBAction func itemSelected(_ sender: UITextField) {
+    @objc func itemSelected(_ sender: UITextField) {
         // Create the picker view
         let tintColor: UIColor = UIColor(red: 101.0/255.0, green: 98.0/255.0, blue: 164.0/255.0, alpha: 1.0)
         let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.owner.view.frame.width, height: 240))

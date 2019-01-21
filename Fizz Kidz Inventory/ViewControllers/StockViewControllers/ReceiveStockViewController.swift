@@ -19,7 +19,7 @@ class ReceiveStockViewController: ManageStockViewController {
     /// Validates the fields before updating Firestore
     @IBAction func receiveStockButtonPressed(_ sender: Any) {
         
-        let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! IngredientPickerTableViewCell
+        let itemCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ItemPickerTableViewCell
         let locationCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! LocationPickerTableViewCell
         let qtyCell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! SelectQtyTableViewCell
         
@@ -119,17 +119,19 @@ extension ReceiveStockViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "itemPickerCell") as! IngredientPickerTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemPickerCell") as! ItemPickerTableViewCell
             cell.owner = self
+            cell.headerLabel.text = "Item"
             return cell
         }
         else if (indexPath.row == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "locationPickerCell") as! LocationPickerTableViewCell
             cell.owner = self
+            cell.headerLabel.text = "Location"
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "qtyPickerCell") as! SelectQtyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "qtySelectionCell") as! SelectQtyTableViewCell
             return cell
         }
     }

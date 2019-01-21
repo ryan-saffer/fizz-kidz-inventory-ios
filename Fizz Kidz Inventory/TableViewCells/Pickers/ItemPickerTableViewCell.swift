@@ -9,15 +9,22 @@
 import UIKit
 
 /// Table cell used for selecting a stock item
-class IngredientPickerTableViewCell: PickerTableViewCell {
+class ItemPickerTableViewCell: PickerTableViewCell {
+    
+    //================================================================================
+    // MARK: - Parameters
+    //================================================================================
+    
+    override var reuseIdentifier: String? {
+        return "itemPickerCell"
+    }
     
     //================================================================================
     // MARK: - Methods
     //================================================================================
     
     override func assignPickerDataSource() {
-        self.pickerDataSource = IngredientPickerViewDataSource()
-        self.picker.dataSource = self.pickerDataSource
+        self.pickerDataSource = ItemPickerViewDataSource()
     }
     
     override func pickerItemSelected(_ sender: UIButton) {
