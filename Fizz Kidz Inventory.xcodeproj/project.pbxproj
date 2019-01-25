@@ -19,7 +19,7 @@
 		CD6154B321E45652008E9F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B221E45652008E9F38 /* Assets.xcassets */; };
 		CD6154B621E45652008E9F38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6154B421E45652008E9F38 /* LaunchScreen.storyboard */; };
 		CD6154BE21E45783008E9F38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */; };
-		CD80072A21EF4669005B573D /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80072921EF4669005B573D /* SplashScreenViewController.swift */; };
+		CD80072A21EF4669005B573D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80072921EF4669005B573D /* SignInViewController.swift */; };
 		CD88847E21F57D72001FC739 /* PickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD88847D21F57D72001FC739 /* PickerTableViewCell.xib */; };
 		CD88848221F57EB5001FC739 /* QtySelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD88848121F57EB5001FC739 /* QtySelectionTableViewCell.xib */; };
 		CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */; };
@@ -50,7 +50,7 @@
 		CD6154B521E45652008E9F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD6154B721E45652008E9F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CD80072921EF4669005B573D /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		CD80072921EF4669005B573D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CD88847D21F57D72001FC739 /* PickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerTableViewCell.xib; sourceTree = "<group>"; };
 		CD88848121F57EB5001FC739 /* QtySelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QtySelectionTableViewCell.xib; sourceTree = "<group>"; };
 		CD8D560021E8D24F00DE5F0F /* SelectQtyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQtyTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +87,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CD1828F221FB5D4500DA40F2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CD6154B421E45652008E9F38 /* LaunchScreen.storyboard */,
+				CD6154AF21E45651008E9F38 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		CD4679F721E6C8C400D4E579 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +110,7 @@
 			children = (
 				CD8D560B21E9B2B700DE5F0F /* StockViewControllers */,
 				CD4679FF21E72A5900D4E579 /* ViewStockViewController.swift */,
-				CD80072921EF4669005B573D /* SplashScreenViewController.swift */,
+				CD80072921EF4669005B573D /* SignInViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -139,15 +148,14 @@
 		CD6154AA21E45651008E9F38 /* Fizz Kidz Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				CD1828F221FB5D4500DA40F2 /* Storyboards */,
 				CD4679FE21E6E16B00D4E579 /* ViewControllers */,
 				CD467A0121E7364600D4E579 /* TableViewCells */,
 				CDD5244A21E8B3A0003CACF0 /* PickerViewDataSources */,
 				CD8D560621E9AEA400DE5F0F /* Structs */,
 				CD4679F721E6C8C400D4E579 /* Extensions */,
 				CD6154AB21E45651008E9F38 /* AppDelegate.swift */,
-				CD6154AF21E45651008E9F38 /* Main.storyboard */,
 				CD6154B221E45652008E9F38 /* Assets.xcassets */,
-				CD6154B421E45652008E9F38 /* LaunchScreen.storyboard */,
 				CD6154B721E45652008E9F38 /* Info.plist */,
 				CD6154BD21E45783008E9F38 /* GoogleService-Info.plist */,
 			);
@@ -214,6 +222,7 @@
 				CD6154A621E45651008E9F38 /* Resources */,
 				8B8C16C370B4A53EC28CEAF0 /* [CP] Embed Pods Frameworks */,
 				CD8D561021EDCB7200DE5F0F /* ShellScript */,
+				4C15B195128D00EDB14DF99B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,6 +286,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4C15B195128D00EDB14DF99B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8B8C16C370B4A53EC28CEAF0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,6 +312,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Fizz Kidz Inventory/Pods-Fizz Kidz Inventory-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -297,6 +326,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -316,12 +347,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(SRCROOT)/Fizz\\ Kidz\\ Inventory/Info.plist",
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -356,7 +383,7 @@
 			files = (
 				CD8D560D21EB821C00DE5F0F /* NoCursorTextField.swift in Sources */,
 				CD8D560121E8D24F00DE5F0F /* SelectQtyTableViewCell.swift in Sources */,
-				CD80072A21EF4669005B573D /* SplashScreenViewController.swift in Sources */,
+				CD80072A21EF4669005B573D /* SignInViewController.swift in Sources */,
 				CDD5244721E78BDD003CACF0 /* ItemPickerTableViewCell.swift in Sources */,
 				CD467A0321E7366A00D4E579 /* StockTableViewCell.swift in Sources */,
 				CDD5245521E8C8DC003CACF0 /* PickerTableViewCell.swift in Sources */,

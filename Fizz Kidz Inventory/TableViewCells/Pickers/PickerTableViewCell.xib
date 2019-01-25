@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad11_0rounded" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,25 +33,24 @@
                         </constraints>
                     </view>
                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxJ-Zm-Ygj" userLabel="Text Field" customClass="NoCursorTextField" customModule="Fizz_Kidz_Inventory" customModuleProvider="target">
-                        <rect key="frame" x="124" y="-0.5" width="251" height="44.5"/>
+                        <rect key="frame" x="116" y="-0.5" width="259" height="44.5"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QE-IS-x2U" userLabel="Item Label">
-                        <rect key="frame" x="124" y="0.0" width="251" height="44"/>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="SELECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QE-IS-x2U" userLabel="Item Label">
+                        <rect key="frame" x="116" y="0.0" width="259" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="rxJ-Zm-Ygj" firstAttribute="leading" secondItem="gkJ-No-nV7" secondAttribute="trailing" constant="8" id="7Yi-55-GYa"/>
+                    <constraint firstItem="rxJ-Zm-Ygj" firstAttribute="leading" secondItem="gkJ-No-nV7" secondAttribute="trailing" id="7Yi-55-GYa"/>
                     <constraint firstItem="gkJ-No-nV7" firstAttribute="leading" secondItem="GOX-ni-8Le" secondAttribute="trailing" constant="16" id="FUl-Op-hhl"/>
                     <constraint firstItem="rxJ-Zm-Ygj" firstAttribute="centerY" secondItem="hBf-1i-6da" secondAttribute="centerY" id="Y4m-Sq-Q5o"/>
-                    <constraint firstItem="0QE-IS-x2U" firstAttribute="leading" secondItem="gkJ-No-nV7" secondAttribute="trailing" constant="8" id="gfp-Z6-2Nd"/>
+                    <constraint firstItem="0QE-IS-x2U" firstAttribute="leading" secondItem="gkJ-No-nV7" secondAttribute="trailing" id="gfp-Z6-2Nd"/>
                     <constraint firstAttribute="trailing" secondItem="rxJ-Zm-Ygj" secondAttribute="trailing" id="hhA-ah-gEp"/>
-                    <constraint firstItem="0QE-IS-x2U" firstAttribute="width" secondItem="rxJ-Zm-Ygj" secondAttribute="width" id="xSK-g5-rH1"/>
                     <constraint firstItem="GOX-ni-8Le" firstAttribute="centerY" secondItem="hBf-1i-6da" secondAttribute="centerY" id="ySh-uL-9XN"/>
                 </constraints>
             </tableViewCellContentView>

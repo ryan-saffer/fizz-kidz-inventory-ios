@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseFirestore
 
-class ViewStockViewController: UIViewController {
+class ViewStockViewController: UIViewController, LogOutProtocol {
 
     //================================================================================
     // MARK: - Properties
@@ -18,6 +18,7 @@ class ViewStockViewController: UIViewController {
     // IBOutlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var logOutIcon: UIImageView!
 
     // variables
     var firestore: Firestore!
@@ -44,7 +45,20 @@ class ViewStockViewController: UIViewController {
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
         self.tableView.rowHeight = UITableView.automaticDimension
         
+        // log out icon
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(logOutTapped))
+        self.logOutIcon.addGestureRecognizer(tapRecognizer)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.refresh()
+    }
+    
+    /// log out button target - logs out of Google Sign In and returns to login page
+    @objc func logOutTapped(recognizer: UIGestureRecognizer) {
+        self.logOut()
     }
     
     /// Pulls the latest data from Firestore

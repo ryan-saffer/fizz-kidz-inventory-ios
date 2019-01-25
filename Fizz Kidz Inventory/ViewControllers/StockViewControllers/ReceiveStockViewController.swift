@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import GoogleSignIn
 
 /// Controls the view for receiving stock
 class ReceiveStockViewController: ManageStockViewController {

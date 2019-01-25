@@ -8,16 +8,20 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
         return true
     }
 
@@ -41,6 +45,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: [:])
+    }
+}
+
+extension AppDelegate: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        }
+        
+        // ensure root view controller is SignInViewController, else return
+        guard let signInController = self.window?.rootViewController as? SignInViewController else { return }
+        guard let authentication = user?.authentication else {
+            
+            // no user has signed in - ie signInSilenty failed
+            signInController.showSignInButton()
+            return
+        }
+        
+        // hide sign in button to make UI feel responsive
+        signInController.hideSignInButton()
+        
+        // get user credentials and register with Firebase
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+                return
+            }
+            // User is signed in - move onto splashscreen
+            signInController.userAuthenticated()
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        if let error = error {
+            print("\(error.localizedDescription)")
+        }
     }
 }
 

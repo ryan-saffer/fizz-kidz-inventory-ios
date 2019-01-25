@@ -9,7 +9,7 @@
 import UIKit
 
 /// Controller for any views which rearrange stock, such as receiving or moving stock
-class ManageStockViewController: UIViewController {
+class ManageStockViewController: UIViewController, LogOutProtocol {
     
     //================================================================================
     // MARK: - Properties
@@ -17,6 +17,7 @@ class ManageStockViewController: UIViewController {
     
     /// TableView used to select which items are going where
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var logOutIcon: UIImageView!
     
     /// Disables the views UI and shows a spinner in the center
     var spinner: UIView? = nil
@@ -29,6 +30,9 @@ class ManageStockViewController: UIViewController {
         super.viewDidLoad()
         
         self.registerTableViewCells()
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(logOutTapped))
+        self.logOutIcon.addGestureRecognizer(tapRecognizer)
     }
     
     /// Gets cells from xib files and registers as reusable cells for the table view
@@ -36,6 +40,11 @@ class ManageStockViewController: UIViewController {
         self.tableView.register(ItemPickerTableViewCell.self, forCellReuseIdentifier: "itemPickerCell")
         self.tableView.register(LocationPickerTableViewCell.self, forCellReuseIdentifier: "locationPickerCell")
         self.tableView.register(UINib(nibName: "QtySelectionTableViewCell", bundle: nil), forCellReuseIdentifier: "qtySelectionCell")
+    }
+    
+    /// log out button target - logs out of Google Sign In and returns to login page
+    @objc func logOutTapped(recognizer: UIGestureRecognizer) {
+        self.logOut()
     }
     
     /**

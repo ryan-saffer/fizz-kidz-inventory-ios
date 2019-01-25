@@ -121,6 +121,6 @@ extension PickerTableViewCell: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.itemLabel.text = self.pickerDataSource.data[row]
-        self.selectedItem = self.pickerDataSource.data[self.picker.selectedRow(inComponent: 0)]
+        self.selectedItem = self.pickerDataSource.data[row]
     }
 }
