@@ -8,6 +8,12 @@
 
 import UIKit
 
+/// protocol for any cells that can be 'cleared' once used
+protocol ResettableCell {
+    /// clear any selections made
+    func resetCell()
+}
+
 /// Controller for any views which rearrange stock, such as receiving or moving stock
 class ManageStockViewController: UIViewController, LogOutProtocol {
     
@@ -55,11 +61,20 @@ class ManageStockViewController: UIViewController, LogOutProtocol {
      
     */
     func itemChanged(item: String) {
-        for i in 0...tableView.numberOfRows(inSection: 0) {
-            if let cell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? SelectQtyTableViewCell {
+        for cell in self.tableView.visibleCells {
+            if let cell = cell as? SelectQtyTableViewCell {
                 let itemID = (Items.item_names as NSDictionary).allKeys(for: item)[0] as! String
                 let itemUnit = Items.item_units[itemID]!
                 cell.unitLabel.text = itemUnit
+            }
+        }
+    }
+    
+    /// resets all visible resettable cells
+    func resetCells() {
+        for cell in self.tableView.visibleCells {
+            if let cell = cell as? ResettableCell {
+                cell.resetCell()
             }
         }
     }
@@ -87,11 +102,12 @@ class ManageStockViewController: UIViewController, LogOutProtocol {
     - Parameters:
         - title: The title of the alert
         - message: The message of the alert
+        - handler: Completion handler for doing any work after dismissing
  
     */
-    func displayAlert(title: String, message: String) {
+    func displayAlert(title: String, message: String, handler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: handler))
         self.present(alert, animated: true, completion: nil)
     }
 }

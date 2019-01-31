@@ -19,4 +19,15 @@ class SelectQtyTableViewCell: UITableViewCell {
         didSet { qtyTextField?.addDoneToolbar() }
     }
     @IBOutlet weak var unitLabel: UILabel!
+
+}
+
+extension SelectQtyTableViewCell: ResettableCell {
+    
+    // MARK: ResettableCell
+    
+    func resetCell() {
+        self.qtyTextField.text?.removeAll()
+        self.unitLabel.text = "UNIT"
+    }
 }

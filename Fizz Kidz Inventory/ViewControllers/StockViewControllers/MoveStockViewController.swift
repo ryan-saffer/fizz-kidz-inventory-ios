@@ -153,7 +153,9 @@ class MoveStockViewController: ManageStockViewController {
                 }
                 print("Transaction failed: \(error)")
             } else {
-                self.displayAlert(title: "Success!", message: "\(qty) \(unit)s of \(itemName) moved from \(from) to \(to)")
+                self.displayAlert(title: "Success!", message: "\(qty) \(unit)s of \(itemName) moved from \(from) to \(to)", handler: { (action) in
+                    self.resetCells()
+                })
                 print("Transaction succesfully commited!")
             }
             self.enableUI()

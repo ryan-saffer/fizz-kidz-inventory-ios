@@ -99,7 +99,9 @@ class ReceiveStockViewController: ManageStockViewController {
                 print("ERROR: \(err)")
             } else {
                 print("Transaction completed succesfully!")
-                self.displayAlert(title: "Success!", message: "\(qty) \(unit)s of \(itemName) succesfully received in \(location)")
+                self.displayAlert(title: "Success!", message: "\(qty) \(unit)s of \(itemName) succesfully received in \(location)", handler: { (action) in
+                    self.resetCells()
+                    })
             }
             self.enableUI()
         }

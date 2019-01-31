@@ -128,3 +128,13 @@ extension PickerTableViewCell: UIPickerViewDelegate {
         self.selectedItem = self.pickerDataSource.data[row]
     }
 }
+
+extension PickerTableViewCell: ResettableCell {
+    
+    // MARK: ResettableCell
+
+    func resetCell() {
+        self.selectedItem = nil
+        self.itemLabel.text = "SELECT"
+    }
+}
