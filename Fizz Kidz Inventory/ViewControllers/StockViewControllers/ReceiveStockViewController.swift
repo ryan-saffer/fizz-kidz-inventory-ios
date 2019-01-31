@@ -29,7 +29,7 @@ class ReceiveStockViewController: ManageStockViewController {
             self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
             return
         }
-        let itemID = (Items.item_names as NSDictionary).allKeys(for: itemName)[0] as! String
+        let itemID = (Items.names as NSDictionary).allKeys(for: itemName)[0] as! String
         
         guard let location = locationCell.selectedItem else {
             self.displayAlert(title: "Select Location", message: "Tap 'Select' to select the location the stock is being received")
@@ -46,7 +46,7 @@ class ReceiveStockViewController: ManageStockViewController {
         // DISPLAY CONFIRMATION DIALOGUE
         let confirmationAlert = UIAlertController(title: "Confirm receival", message: "\(qty) \(unit)s of \(itemName) will be received in \(location)", preferredStyle: UIAlertController.Style.alert)
         confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (action: UIAlertAction!) in
-            self.reveiveStock(itemName: itemName, itemID: itemID, location: location, qty: qty, unit: unit)
+            self.receiveStock(itemName: itemName, itemID: itemID, location: location, qty: qty, unit: unit)
         }))
         confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(confirmationAlert, animated: true, completion: nil)
@@ -62,7 +62,7 @@ class ReceiveStockViewController: ManageStockViewController {
         - qty: the amount being received
         - unit: the unit the item is measured in
      */
-    func reveiveStock(itemName: String, itemID: String, location: String, qty: Float, unit: String) {
+    func receiveStock(itemName: String, itemID: String, location: String, qty: Float, unit: String) {
         
         self.disableUI()
         

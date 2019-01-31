@@ -8,9 +8,9 @@
 
 import UIKit
 
-/// protocol for any cells that can be 'cleared' once used
+/// Protocol for any cells that can be 'cleared' once used
 protocol ResettableCell {
-    /// clear any selections made
+    /// Clear any selections made
     func resetCell()
 }
 
@@ -48,7 +48,7 @@ class ManageStockViewController: UIViewController, LogOutProtocol {
         self.tableView.register(UINib(nibName: "QtySelectionTableViewCell", bundle: nil), forCellReuseIdentifier: "qtySelectionCell")
     }
     
-    /// log out button target - logs out of Google Sign In and returns to login page
+    /// Log out button target - logs out of Google Sign In and returns to login page
     @objc func logOutTapped(recognizer: UIGestureRecognizer) {
         self.logOut()
     }
@@ -63,14 +63,14 @@ class ManageStockViewController: UIViewController, LogOutProtocol {
     func itemChanged(item: String) {
         for cell in self.tableView.visibleCells {
             if let cell = cell as? SelectQtyTableViewCell {
-                let itemID = (Items.item_names as NSDictionary).allKeys(for: item)[0] as! String
-                let itemUnit = Items.item_units[itemID]!
+                let itemID = (Items.names as NSDictionary).allKeys(for: item)[0] as! String
+                let itemUnit = Items.units[itemID]!
                 cell.unitLabel.text = itemUnit
             }
         }
     }
     
-    /// resets all visible resettable cells
+    /// Resets all visible resettable cells
     func resetCells() {
         for cell in self.tableView.visibleCells {
             if let cell = cell as? ResettableCell {

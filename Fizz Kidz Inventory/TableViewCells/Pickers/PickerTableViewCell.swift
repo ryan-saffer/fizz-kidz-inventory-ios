@@ -8,6 +8,10 @@
 
 import UIKit
 
+let HEADER_LABEL_TAG    = 1
+let TEXT_FIELD_TAG      = 2
+let ITEM_LABEL_TAG      = 3
+
 /**
  Table cell used for selecting something using a picker view
  
@@ -20,7 +24,7 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
     //================================================================================
     
     // IBOutlets - set programatically inside init
-    /// 'hidden' text field used to react to label being selected
+    /// 'Hidden' text field used to react to label being selected
     weak var textField: NoCursorTextField!
     weak var itemLabel: UILabel!
     weak var headerLabel: UILabel!
@@ -50,17 +54,17 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
         
         // link each view to parameter (since xib assigned programatically, no IBOutlets exist)
-        if let headerLabel = self.viewWithTag(1) as? UILabel {
+        if let headerLabel = self.viewWithTag(HEADER_LABEL_TAG) as? UILabel {
             self.headerLabel = headerLabel
         }
-        if let textField = self.viewWithTag(2) as? NoCursorTextField {
+        if let textField = self.viewWithTag(TEXT_FIELD_TAG) as? NoCursorTextField {
             self.textField = textField
             // remove undo, copy & paste items in iPad
             self.textField.inputAssistantItem.leadingBarButtonGroups.removeAll()
             self.textField.inputAssistantItem.trailingBarButtonGroups.removeAll()
             self.textField.addTarget(self, action: #selector(self.itemSelected(_:)), for: .editingDidBegin)
         }
-        if let itemLabel = self.viewWithTag(3) as? UILabel {
+        if let itemLabel = self.viewWithTag(ITEM_LABEL_TAG) as? UILabel {
             self.itemLabel = itemLabel
         }
         
@@ -92,8 +96,9 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.textField.resignFirstResponder()
     }
     
+    /// Called when 'hidden' text field is selected - displays picker
     @objc func itemSelected(_ sender: UITextField) {
-        // Create the picker view
+        // Create a view, add picker to it, and set view as text field input view
         let tintColor: UIColor = UIColor(red: 101.0/255.0, green: 98.0/255.0, blue: 164.0/255.0, alpha: 1.0)
         let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.owner.view.frame.width, height: 240))
         self.picker.tintColor = tintColor

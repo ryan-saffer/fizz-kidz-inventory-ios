@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fizz Kidz Inventory/ViewControllers/StockViewControllers/ReceiveStockViewController.swift"
-            timestampString = "570590374.264233"
+            timestampString = "570625653.787599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "reveiveStock(itemName:itemID:location:qty:unit:)"
+            landmarkName = "receiveStock(itemName:itemID:location:qty:unit:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fizz Kidz Inventory/ViewControllers/ViewStockViewController.swift"
-            timestampString = "570201241.187627"
+            timestampString = "570625653.787704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fizz Kidz Inventory/TableViewCells/Pickers/PickerTableViewCell.swift"
-            timestampString = "570590374.26439"
+            timestampString = "570625653.787997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fizz Kidz Inventory/TableViewCells/SelectQtyTableViewCell.swift"
-            timestampString = "570590374.264477"
+            timestampString = "570625653.788064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -138,13 +138,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fizz Kidz Inventory/TableViewCells/SelectQtyTableViewCell.swift"
-            timestampString = "570590374.26454"
+            timestampString = "570625653.788113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "SelectQtyTableViewCell"
-            landmarkType = "21">
+            landmarkName = "resetCell()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fizz Kidz Inventory/ViewControllers/StockViewControllers/ReceiveStockViewController.swift"
-            timestampString = "570590374.264595"
+            timestampString = "570625653.788156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fizz Kidz Inventory/ViewControllers/StockViewControllers/ReceiveStockViewController.swift"
-            timestampString = "570590374.264665"
+            timestampString = "570625653.788209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"

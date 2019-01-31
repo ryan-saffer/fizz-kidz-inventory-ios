@@ -9,9 +9,9 @@
 import Foundation
 
 struct Items {
-    static var item_names: [String: String] = [:]
-    
-    static var item_units: [String: String] = [:]
+    // populated from Firestore after login
+    static var names: [String: String] = [:]
+    static var units: [String: String] = [:]
 }
 
 struct Locations {

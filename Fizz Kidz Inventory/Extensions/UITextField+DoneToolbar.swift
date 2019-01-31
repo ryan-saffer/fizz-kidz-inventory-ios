@@ -15,6 +15,10 @@ import UIKit
  */
 extension UITextField {
     
+    //================================================================================
+    // MARK: - Methods
+    //================================================================================
+    
     func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
         let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
         

@@ -12,7 +12,7 @@ import UIKit
 class ItemPickerTableViewCell: PickerTableViewCell {
     
     //================================================================================
-    // MARK: - Parameters
+    // MARK: - Properties
     //================================================================================
     
     override var reuseIdentifier: String? {

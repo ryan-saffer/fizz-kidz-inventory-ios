@@ -14,7 +14,7 @@ class PickerViewDataSource: NSObject, UIPickerViewDataSource {
     // MARK: - Properties
     //================================================================================
     
-    /// sub-classes must populate this array
+    /// Sub-classes must populate this array
     var data: [String]!
     
     //================================================================================

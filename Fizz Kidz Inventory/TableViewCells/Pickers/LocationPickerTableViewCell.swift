@@ -12,7 +12,7 @@ import UIKit
 class LocationPickerTableViewCell: PickerTableViewCell {
 
     //================================================================================
-    // MARK: - Parameters
+    // MARK: - Properties
     //================================================================================
     
     override var reuseIdentifier: String? {

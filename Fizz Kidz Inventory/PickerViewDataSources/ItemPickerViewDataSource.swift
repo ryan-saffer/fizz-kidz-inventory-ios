@@ -21,12 +21,12 @@ class ItemPickerViewDataSource: PickerViewDataSource {
         self.data = []
         
         // if no internet, Items.item_names will be empty
-        if (Items.item_names.isEmpty) {
+        if (Items.names.isEmpty) {
             self.data.append("NO INTERNET CONNECTION")
             return
         }
         
-        for item in Items.item_names {
+        for item in Items.names {
             self.data.append(item.value)
         }
         self.data.sort()

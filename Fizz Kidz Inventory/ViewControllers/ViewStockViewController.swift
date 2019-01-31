@@ -56,7 +56,7 @@ class ViewStockViewController: UIViewController, LogOutProtocol {
         self.refresh()
     }
     
-    /// log out button target - logs out of Google Sign In and returns to login page
+    /// Log out button target - logs out of Google Sign In and returns to login page
     @objc func logOutTapped(recognizer: UIGestureRecognizer) {
         self.logOut()
     }

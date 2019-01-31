@@ -36,7 +36,7 @@ class MoveStockViewController: ManageStockViewController {
             self.displayAlert(title: "Select item", message: "Tap 'Select' to select the item being received")
             return
         }
-        let itemID = (Items.item_names as NSDictionary).allKeys(for: itemName)[0] as! String
+        let itemID = (Items.names as NSDictionary).allKeys(for: itemName)[0] as! String
         
         guard let from = fromCell.selectedItem else {
             self.displayAlert(title: "Select 'From' location", message: "Tap 'Select' to select the location the item is being moved from")

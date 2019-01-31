@@ -62,16 +62,16 @@ extension AppDelegate: GIDSignInDelegate {
         }
         
         // ensure root view controller is SignInViewController, else return
-        guard let signInController = self.window?.rootViewController as? SignInViewController else { return }
+        guard let loginController = self.window?.rootViewController as? LoginViewController else { return }
         guard let authentication = user?.authentication else {
             
             // no user has signed in - ie signInSilenty failed
-            signInController.showSignInButton()
+            loginController.showSignInButton()
             return
         }
         
         // hide sign in button to make UI feel responsive
-        signInController.hideSignInButton()
+        loginController.hideSignInButton()
         
         // get user credentials and register with Firebase
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
@@ -83,7 +83,7 @@ extension AppDelegate: GIDSignInDelegate {
                 return
             }
             // User is signed in - move onto splashscreen
-            signInController.userAuthenticated()
+            loginController.userAuthenticated()
         }
     }
     

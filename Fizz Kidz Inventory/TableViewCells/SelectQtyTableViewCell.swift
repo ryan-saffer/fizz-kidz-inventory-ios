@@ -11,7 +11,7 @@ import UIKit
 class SelectQtyTableViewCell: UITableViewCell {
 
     //================================================================================
-    // MARK: - Parameters
+    // MARK: - Properties
     //================================================================================
     
     /// The text field for accepting qty input
@@ -21,6 +21,10 @@ class SelectQtyTableViewCell: UITableViewCell {
     @IBOutlet weak var unitLabel: UILabel!
 
 }
+
+//================================================================================
+// MARK: - Extensions
+//================================================================================
 
 extension SelectQtyTableViewCell: ResettableCell {
     
