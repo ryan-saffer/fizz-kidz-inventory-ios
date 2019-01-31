@@ -44,8 +44,9 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         // load the xib to associate with
         let nib = Bundle.main.loadNibNamed("PickerTableViewCell", owner: nil, options: nil)
-        if let view = nib?.first as? UIView{
+        if let view = nib?.first as? UIView {
             self.addSubview(view)
+            view.frame = bounds
         }
         
         // link each view to parameter (since xib assigned programatically, no IBOutlets exist)
@@ -54,6 +55,9 @@ class PickerTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
         if let textField = self.viewWithTag(2) as? NoCursorTextField {
             self.textField = textField
+            // remove undo, copy & paste items in iPad
+            self.textField.inputAssistantItem.leadingBarButtonGroups.removeAll()
+            self.textField.inputAssistantItem.trailingBarButtonGroups.removeAll()
             self.textField.addTarget(self, action: #selector(self.itemSelected(_:)), for: .editingDidBegin)
         }
         if let itemLabel = self.viewWithTag(3) as? UILabel {
