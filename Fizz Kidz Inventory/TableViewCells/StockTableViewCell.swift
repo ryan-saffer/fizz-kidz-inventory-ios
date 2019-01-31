@@ -33,14 +33,22 @@ class StockTableViewCell: UITableViewCell {
     */
     func setData(_ data: [String: Any]) {
         
-        self.nameLabel.text = data["DISP_NAME"] as? String
-        self.qtyLabel.text = String(describing: data["QTY"]!)
-        self.unitLabel.text = data["UNIT"] as? String
+        // get the data
+        let dispName = data["DISP_NAME"] as! String
+        let unit = data["UNIT"] as! String
+        let qty = data["QTY"] as! Double
+        let high = data["HIGH"] as! Double
+        let low = data["LOW"] as! Double
         
-        let qty = data["QTY"] as! Float
-        let high = data["HIGH"] as! Float
-        let low = data["LOW"] as! Float
+        // format and change labels
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let formattedQty = numberFormatter.string(from: NSNumber(floatLiteral: qty))
+        self.nameLabel.text = dispName
+        self.qtyLabel.text = String(format: formattedQty!)
+        self.unitLabel.text = unit
         
+        // change circle colour depending on quantity
         if (qty >= high) {
             self.circleIcon.tintColor = UIColor.green
         } else if (qty > low && qty < high) {
