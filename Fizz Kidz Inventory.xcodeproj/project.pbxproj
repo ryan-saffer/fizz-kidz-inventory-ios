@@ -221,8 +221,8 @@
 				CD6154A521E45651008E9F38 /* Frameworks */,
 				CD6154A621E45651008E9F38 /* Resources */,
 				8B8C16C370B4A53EC28CEAF0 /* [CP] Embed Pods Frameworks */,
-				CD8D561021EDCB7200DE5F0F /* ShellScript */,
 				4C15B195128D00EDB14DF99B /* [CP] Copy Pods Resources */,
+				CD8D561021EDCB7200DE5F0F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -348,7 +348,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Fizz\\ Kidz\\ Inventory/Info.plist",
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputPaths = (
 			);
@@ -546,6 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = K2RBHLY34J;
 				INFOPLIST_FILE = "Fizz Kidz Inventory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
