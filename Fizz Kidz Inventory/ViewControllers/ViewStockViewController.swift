@@ -23,9 +23,10 @@ class ViewStockViewController: UIViewController, LogOutProtocol {
     // variables
     var firestore: Firestore!
     var ingredientData: [[String: Any]] = [[String: Any]]()
-    var foodData: [[String: Any]] = [[String: Any]]()
-    var generalData: [[String: Any]] = [[String: Any]]()
-    var packagingData: [[String: Any]] = [[String: Any]]()
+    var foodData:       [[String: Any]] = [[String: Any]]()
+    var generalData:    [[String: Any]] = [[String: Any]]()
+    var packagingData:  [[String: Any]] = [[String: Any]]()
+    var otherData:      [[String: Any]] = [[String: Any]]()
     
     //================================================================================
     // MARK: - Methods
@@ -77,6 +78,7 @@ class ViewStockViewController: UIViewController, LogOutProtocol {
                 self.foodData.removeAll()
                 self.generalData.removeAll()
                 self.packagingData.removeAll()
+                self.otherData.removeAll()
                 
                 for ingredient in querySnapshot!.documents {
                     
@@ -96,8 +98,10 @@ class ViewStockViewController: UIViewController, LogOutProtocol {
                         self.ingredientData.append(data)
                     case "GENERAL":
                         self.generalData.append(data)
-                    default: // "PACKAGING"
+                    case "PACKAGING":
                         self.packagingData.append(data)
+                    default: // "OTHER"
+                        self.otherData.append(data)
                     }
                 }
                 self.tableView.refreshControl?.endRefreshing()
@@ -141,7 +145,7 @@ extension ViewStockViewController: UITableViewDataSource {
     // MARK: UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -152,8 +156,10 @@ extension ViewStockViewController: UITableViewDataSource {
             return "General"
         case 2:
             return "Packaging"
-        default:
+        case 3:
             return "Ingredients"
+        default:
+            return "Other"
         }
     }
     
@@ -169,8 +175,10 @@ extension ViewStockViewController: UITableViewDataSource {
             return self.generalData.count
         case 2:
             return self.packagingData.count
-        default:
+        case 3:
             return self.ingredientData.count
+        default:
+            return self.otherData.count
         }
     }
 
@@ -184,8 +192,10 @@ extension ViewStockViewController: UITableViewDataSource {
             data = self.generalData[indexPath.row]
         case 2:
             data = self.packagingData[indexPath.row]
-        default:
+        case 3:
             data = self.ingredientData[indexPath.row]
+        default:
+            data = self.otherData[indexPath.row]
         }
         cell.setData(data)
         return cell
